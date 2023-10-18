@@ -1,0 +1,83 @@
+:root
+  --clip-position: 50% 50%
+  --mask-position: 50% 50%
+
+body
+  display: flex
+  justify-content: center
+  align-items: center
+  background: url(https://i.imgur.com/6VI2vU9.jpg) no-repeat center
+  background-size: cover
+  min-height: 100vh
+  padding-top: 2rem
+  padding-bottom: 2rem
+
+h1
+  position: relative
+  font-family: 'Open Sans', 'Arial', sans-serif
+  font-size: 130px
+  font-weight: 800
+  letter-spacing: -0.04em
+  line-height: 0.875
+  text-transform: uppercase
+  text-align: center
+  width: 45rem
+  overflow: hidden
+  cursor: default
+
+  .fill2,
+  .mask2
+    
+    font-weight: 300
+    letter-spacing: 0.04em
+
+  .fills
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    .fill.fill1,
+    .fill.fill3
+      color: #E0E0E0
+      font-size: 100px
+
+    .fill.fill2
+      color: rgb(119, 170, 193)
+
+  .masks
+    clip-path: circle(400px at var(--clip-position))
+    -webkit-mask-image: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 66%)
+    -webkit-mask-size: 500px 500px
+    -webkit-mask-repeat: no-repeat
+    -webkit-mask-position: var(--mask-position)
+
+    .mask
+      display: block
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+
+      &.mask1
+        background-image: url(https://images.unsplash.com/photo-1496096265110-f83ad7f96608?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
+
+      &.mask2
+        background-image: url(https://i.imgur.com/K62kzNz.jpg)
+
+      &.mask3
+        background-image: url(https://images.unsplash.com/photo-1524856781660-e5c92f4ac62a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
+
+@media only screen and (min-width: 1400px)
+  h1
+    font-size: 230px
+    width: 79rem
+
+    .fill2,
+    .mask2
+      font-size: 150px
+
+    .masks
+      clip-path: circle(800px at var(--clip-position))
+      -webkit-mask-size: 800px 800px

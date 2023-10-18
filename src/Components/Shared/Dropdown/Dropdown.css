@@ -1,0 +1,55 @@
+.nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav {
+    background: white;
+    text-align: center;
+  }
+  
+  .nav ul {
+    font-size: 15px;
+    z-index: 14;
+  }
+  
+  .nav ul li {
+    position: relative;
+    float: left;
+  }
+  
+  .nav ul li h2 {
+    display: inline-block;
+    text-decoration: none;
+    padding: 11px 20px;
+    -webkit-transition: h2ll 0.1s ease-in;
+    -o-transition: h2ll 0.1s ease-in;
+    transition: h2ll 0.1s ease-in;
+  }
+  
+  .nav ul li > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    z-index: 1;
+    text-align: left;
+  }
+  
+  .nav ul li > ul li {
+    /* Set display to inline-block to allow the ul to adjust its width */
+    display: inline-block;
+    /* You can add additional styling here if needed */
+  }
+  
+  .nav ul li:hover h2,
+  .nav ul li.active {
+    background-color: rgb(140, 143, 184);
+    color: white;
+  }
+  
+  .nav ul li.active {
+    pointer-events: none;
+  }
+  /* Add this CSS to your component or a stylesheet */

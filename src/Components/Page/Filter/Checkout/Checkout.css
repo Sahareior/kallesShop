@@ -1,0 +1,140 @@
+.container body {
+    font-family: 'Roboto', sans-serif!important;
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+.container .mainscreen
+{
+	min-height: 1000px;
+   
+	width: 110.7%;
+	display: flex;
+    flex-direction: column;
+    background-color: #DFDBE5;
+    background-position: center;
+    background-image: url("https://wallpaperaccess.com/full/3063067.png");
+    color:#963E7B;
+}
+
+.container .card {
+	width: 106.2rem;
+    margin: auto;
+    background: white;
+    position:center;
+    align-self: center;
+ 
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display:flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.container .leftside {
+	background: #030303;
+	width: 25rem;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.container .product {
+    object-fit: cover;
+	width: 20em;
+    height: 20em;
+    border-radius: 100%;
+}
+
+.container .rightside {
+    background-color: #ffffff;
+	width: 40rem;
+	border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+.container p{
+    display:block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: .8rem 0;
+}
+
+.container .inputbox
+{
+    color: white;
+	width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(85, 84, 84);
+    font-size: 1.1rem;
+    font-weight: 500;
+  outline:none;
+}
+
+.container .expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.container .expcvv_text{
+    padding-right: 1rem;
+}
+.container .expcvv_text2{
+    padding:0 1rem;
+}
+
+.container .button{
+    background: linear-gradient(
+135deg
+, #753370 0%, #298096 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width:100%;
+    letter-spacing: .11rem;
+    outline:none;
+}
+
+.container .button:hover
+{
+	transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+}
+
+@media only screen and (max-width: 1000px) {
+   .container  .card{
+        flex-direction: column;
+        width: auto;
+      
+    }
+
+   .container  .leftside{
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+      border-top-right-radius:0;
+      border-radius:0;
+    }
+
+   .container  .rightside{
+        width:auto;
+        border-bottom-left-radius: 1.5rem;
+        padding:0.5rem 3rem 3rem 2rem;
+      border-radius:0;
+    }
+}

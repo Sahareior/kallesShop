@@ -1,0 +1,16 @@
+/* Blog.css */
+
+.card {
+    transition: background-color 0.5s ease;
+  }
+  
+  .card:hover .card-image {
+    filter: brightness(60%);
+  }
+  
+  .card-image {
+    opacity: 1;
+    filter: brightness(100%);
+    transition: filter 0.5s ease;
+  }
+  

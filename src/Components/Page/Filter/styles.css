@@ -1,0 +1,29 @@
+@import "rsuite/dist/rsuite.css";
+
+#root{ padding: 0; margin: 0; }
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.with-left-border {
+    position: relative;
+  }
+  
+  .with-left-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px; /* Adjust the width of the vertical line as needed */
+    height: 100%; /* This will make the line extend the full height of the parent element */
+    background-color: red; /* Adjust the color of the line as needed */
+  }
+  .left-border-content {
+    padding-left: 20px; /* Adjust the amount of padding as needed */
+  }
+
+  .rs-drawer-full.rs-drawer-left {
+    width: calc(100% - 20%);
+}

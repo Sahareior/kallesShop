@@ -1,0 +1,130 @@
+/* --------- prod box ---------- */
+.prod-box {
+  width: 330px; /* Fixed width */
+  height: 500px; /* Fixed height */
+  background-color: #fff;
+  /* border: 1px solid #ddd;
+  box-shadow: 1px 2px 4px #ddd;
+  -moz-box-shadow: 1px 2px 4px #ddd;
+  -webkit-box-shadow: 1px 2px 4px #ddd;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; */
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Open sans", Arial;
+  overflow: hidden; /* Ensure content stays within the fixed height */
+}
+.prod-box .img-holder {
+  margin-top: 3px;
+  text-align: center;
+  height: 400px; /* Fixed image height */
+  overflow: hidden;
+  width: auto;
+
+  position: relative;
+  background-color: #ccc; /* Add a background color to the image holder */
+}
+.prod-box .item-img-2 {
+  /* opacity: .1; */
+  transition: 1.7s;
+}
+.prod-box .img-holder:hover .item-img-2 {
+  /* opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.9s ease-in-out;
+  -webkit-transition: opacity 0.9s ease-in-out; */
+  transform: scale(1.2);
+}
+.prod-box .img-holder:hover .item-img-1 {
+  display: none;
+ 
+}
+
+.prod-box .img-holder img {
+  max-height: 100%;
+}
+
+.prod-box .anons {
+  padding: 5px;
+  border-top: 1px solid #ddd;
+}
+.prod-box p {
+  margin: 0;
+  padding: 3px;
+}
+.prod-box .title {
+  font-size: 16px;
+  max-height: 45px;
+  overflow: hidden;
+  font-family: "Open sans", Arial;
+}
+.prod-box .price {
+  float: left;
+  color: #d90000;
+}
+.prod-box .sold {
+  float: right;
+  color: #999;
+}
+.prod-box .info {
+  width: 60%;
+  font-size: 12px;
+  color: #666;
+  float: left;
+}
+
+.prod-box .action {
+  width: 39%;
+  float: right;
+  position: relative;
+}
+.prod-box:hover .blok-hover {
+  bottom: 60px;
+  /* transition: opacity 2s; */
+  opacity: 1;
+}
+
+.blok-hover {
+  position: absolute;
+  /* opacity: 0.2; */
+  bottom: -93px;
+  padding: 46px;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  color: #fff;
+  background-color: rgba(0, 90, 100, 0.4);
+  z-index: 99;
+  transition: all 400ms ease-in-out 0.2s;
+}
+
+/* .prod-box  .btn{background-color:#FF4000; border-radius:0; font-size:12px; padding:3px; */
+/* -webkit-border-radius:0; -moz-border-radius:0; color:#fff; border:0} */
+
+.prod-box .action .btn {
+  width: 100%;
+}
+.prod-box .action .btn-add {
+  display: none;
+  position: absolute;
+}
+.prod-box .action:hover .btn-add {
+  display: block;
+}
+
+.prod-box .btn-order:hover {
+  background-color: #d90000;
+  color: #fff;
+}
+.prod-box .btn-add:hover {
+  background-color: #d90000;
+  color: #fff;
+}
+
+.prod-box .img-holder img {
+  width: 100%; /* Allow the image to adjust its width */
+  height: 100%; /* Make the image take up 100% of the height */
+}
