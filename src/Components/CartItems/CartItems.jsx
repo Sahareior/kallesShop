@@ -129,6 +129,8 @@ const filterData = (id) =>{
   setCartPrice((prevCartPrice) => prevCartPrice.filter(item => item.id !== id))
   deleteShoppingCart(id)
 }
+
+console.log(subtotal)
   return (
     <>
       <hr />
@@ -184,7 +186,7 @@ const filterData = (id) =>{
         <h3 className='flex justify-around font-bold '>Subtotal:<span>{subtotal} $</span></h3>
           <div className='flex flex-col mt-8 justify-center items-center gap-2'>
            {/* <Link to='/allCartItems'> <button className='btn btn-primary'>View Cart</button></Link> */}
-           <Link to='/checkout' state={{total:subtotal, data:checkoutData}}> <button className='btn btn-secondary'>Check Out</button></Link>
+           <Link to='/checkout' state={{total:subtotal, data:checkoutData}}> <button className={`${subtotal? 'btn btn-secondary': 'hidden'}`}>Check Out</button></Link>
           </div>
         </div>
         </Drawer.Body>
