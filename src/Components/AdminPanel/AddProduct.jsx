@@ -219,7 +219,7 @@ const AddProduct = () => {
       <div className="mt-6">
         <Title text={"Add an Item"} />
       </div>
-      <section className="w-full  p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
+      <section className="w-full  p-6 mx-auto bg-slate-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
         <h1 className="text-xl font-bold text-white capitalize dark:text-white"></h1>
 
         <form onSubmit={handleSubmit}>
