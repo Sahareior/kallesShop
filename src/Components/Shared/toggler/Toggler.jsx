@@ -18,13 +18,13 @@ const Toggler = () => {
 
   return (
     <button
-    className={`md:w-14 md:h-7 w-8 h-5 rounded-full ${isDarkMode ? 'bg-white' : ''} flex items-center transition duration-300 focus:outline-none shadow`}
+    className={`md:w-14 md:h-7 w-8 h-4 rounded-full ${isDarkMode ? 'bg-white' : ''} flex items-center transition duration-300 focus:outline-none shadow`}
     onClick={toggleTheme}
   >
     <div
       id="switch-toggle"
-      className={`md:w-10 md:h-10 w-7 h-7 relative rounded-full transition duration-500 transform ${
-        isDarkMode ? 'bg-gray-700 translate-x-5' : 'bg-yellow-500 -translate-x-4'
+      className={`md:w-10 md:h-10 w-8 h-7 relative rounded-full transition duration-500 transform ${
+        isDarkMode ? 'bg-gray-700 translate-x-4' : 'bg-yellow-500 -translate-x-3'
       } p-1 text-white`}
     >
       {isDarkMode ? (

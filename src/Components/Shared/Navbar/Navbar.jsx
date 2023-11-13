@@ -90,7 +90,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end z-10">
-   <li className='mr-10'> <Toggler></Toggler></li>
+   <li className='mr-6'> <Toggler></Toggler></li>
   <div className="flex justify-center items-center">
     <div className="dropdown  dropdown-end">
      <li className='md:flex mr-5 md:visible relative '>

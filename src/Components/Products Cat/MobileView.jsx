@@ -57,7 +57,7 @@ const MobileView = ({ data, text, addToCart }) => {
         theme="light"
       />
       <Headings text={text}></Headings>
-      <div className="grid grid-cols-2 gap-3 justify-items-center">
+      <div className="grid grid-cols-2 gap-2 p-2 justify-items-center">
         {currentData.map((item) => (
           <div key={item._id} className=" h-[300px]">
             <div className="">

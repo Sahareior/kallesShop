@@ -23,6 +23,7 @@ const App = () => {
 
     window.addEventListener('beforeunload', handleBeforeUnload);
 
+
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };

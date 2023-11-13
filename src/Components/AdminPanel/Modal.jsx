@@ -53,10 +53,11 @@ const handleSubmit =(e)=>{
 }
   return (
     <>
-      <div className=" flex items-center justify-center">
+      <div className=" flex text-black items-center justify-center">
         <button
           type="button"
           onClick={openModal}
+          className='text-red-600'
           
         >
           Edit

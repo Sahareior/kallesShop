@@ -34,7 +34,7 @@ const New = () => {
           <Headings text={"Best Sells"} />
         </div>
         <div className="mr-24">
-          <Headings text={"Newly Arrived"} />
+          <Headings text={"Newly rrArrived"} />
         </div>
       </div>
       <div className="md:flex w-full items-center md:justify-between gap-2">
