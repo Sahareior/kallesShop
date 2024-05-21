@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <div>
-<div className={`${isDarkMode? 'bg-gray-900 text-gray-100 text-sm': 'bg-[#C5AA6A]'} navbar z-30  md:w-[1700px] `}>
+<div className={`${isDarkMode? 'bg-gray-900 text-gray-100 text-sm': 'bg-[#C5AA6A]'} navbar z-30  `}>
   <div className="navbar-start">
     <div className={`dropdown ${mobile? 'visible':'hidden'}`}>
       <label tabIndex={0} className="btn btn-ghost hidden">
@@ -90,7 +90,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end z-10">
-   <li className='mr-6'> <Toggler></Toggler></li>
+   <li className='mr-7'> <Toggler></Toggler></li>
   <div className="flex justify-center items-center">
     <div className="dropdown  dropdown-end">
      <li className='md:flex mr-5 md:visible relative '>

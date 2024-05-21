@@ -2,17 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #C5AA6A;
-}
-html,body{
-    overflow-x: hidden;
-}
+/* Apply scale to the root element */
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+/* Root variables for theming */
 :root {
     --bg-color-light: #ffffff; /* Light mode background color */
     --text-color-light: #333333; /* Light mode text color */
     --bg-color-dark: #121212; /* Dark mode background color */
     --text-color-dark: #ffffff; /* Dark mode text color */
-  }
-  
+}

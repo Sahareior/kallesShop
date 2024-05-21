@@ -1,8 +1,9 @@
 /* --------- prod box ---------- */
 .prod-box {
-  width: 330px; /* Fixed width */
+  width: 350px; /* Fixed width */
   height: 500px; /* Fixed height */
   background-color: #fff;
+  image-resolution: inherit;
   /* border: 1px solid #ddd;
   box-shadow: 1px 2px 4px #ddd;
   -moz-box-shadow: 1px 2px 4px #ddd;

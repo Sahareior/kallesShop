@@ -66,7 +66,7 @@ const Newarrivals = ({ data,addToCart,isDarkMode }) => {
           }
           .slider {
             width: 656px;
-            height: 900px;
+            height: 910px;
         
             overflow: hidden;
           }
@@ -89,12 +89,12 @@ const Newarrivals = ({ data,addToCart,isDarkMode }) => {
             {data.map((items) => (
               <div
                 key={items._id}
-                className="card mt-8 h-[400px] card-compact w-96 bg-base-100 border-b-2 border-red-600 "
+                className="card mt-8 h-[400px] card-compact w-96  border-b-2 "
               >
                 <figure>
                   <img src={items.img} alt="Shoes" />
                 </figure>
-                <div className={`${isDarkMode? 'bg-black': 'bg-slate-400'} card-body`}>
+                <div className={`${isDarkMode? 'bg-black': 'bg-slate-100'} card-body`}>
                   <h2 className={`${isDarkMode? 'text-white': ''} card-title`}>{items.title}</h2>
                   <p className={`${isDarkMode? 'text-white':'text-red-500'} text-xl font-bold`}>Price: {items.price}$ <span className='text-black'>$</span></p>
                   <div className="card-actions mt-3 justify-around items-center">

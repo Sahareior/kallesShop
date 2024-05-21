@@ -20,6 +20,7 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import useIsMobile from "../../Hooks/useIsMobile";
 
 export default function PopulerProducts({ category }) {
+  console.log(category)
   const [data] = useData();
   const similerProducts = data.filter((items) => items.category == category);
   const mobile = useIsMobile();
@@ -83,7 +84,7 @@ export default function PopulerProducts({ category }) {
              </Link>
             ) : (
               <Link to={`products/details/${items._id}`} state={{ data: items }}>
-              <div className="bg-black ml-14 w-72 shadow-md hover:shadow-xl  rounded-xl">
+              <div className=" ml-14 w-72 shadow-md hover:shadow-xl  rounded-xl">
                 <a href="#">
                   <img
                     src={items.img}
@@ -92,16 +93,14 @@ export default function PopulerProducts({ category }) {
                   />
                 </a>
                 <div className="px-4 py-3 w-72">
-                  <span className="text-gray-400 mr-3 uppercase text-xl">
+                  <span className="text-gray-800 mr-3 uppercase text-xl">
                     {items.title}
                   </span>
-                  <p className="text-lg font-bold text-black truncate block capitalize">
-                    Product Name
-                  </p>
+                
                   <div className="flex items-center">
-                    <p className="text-lg font-semibold text-white cursor-auto my-1">
-                      {" "}
-                      $ {items.price}
+                    <p className="text-lg font-semibold  my-1">
+                   
+                      ${items.price}
                     </p>
                     {/* <del>
         </del> */}

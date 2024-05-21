@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import useData from "../Hooks/useData";
 
 const Details = () => {
+    window.scrollTo(0, 0);
+    
     const [data] = useData()
     const location = useLocation()
     const {img,img2,id,title,zoomImage,price,category} = location.state.data
@@ -29,30 +31,30 @@ const Details = () => {
 
 
     return (
-        <div className="my-12 ">
+        <div className="my-32">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-            <div className="md:flex gap-8 justify-around items-center">
-                <div className="">
+            <div className="md:flex relative gap-8 justify-around items-center">
+                <div className=" ">
                     <Demo img={img} zoomImage={zoomImage}></Demo>
                 </div>
                 <div className="ml-4">
                     
 
-                    <h3 className="text-2xl font-bold">{title}</h3>
+                    <h3 className="text-4xl font-bold">{title}</h3>
                     <h3 className="text-lg mt-2">$ {price}</h3>
 
-                    <div className="about">
-                        <p>Availability: <span>In stock</span></p>
-                        <p>Product Code: <span>#4657</span></p>
+                    <div className="about flex flex-col gap-5">
+                        <h4 className="text-xl">Availability: <span className="text-xl text-green-500">In stock</span></h4>
+                        <h4 className="text-xl ">Product Code: <span className="text-xl text-gray-400">#4657</span></h4>
                         {/* <p>Tags: <span>Fashion, Hood, Classic</span></p> */}
                     </div>
 
                      <ul>
-                        <li>Dark blue suit for a tone-on-tone look</li>
-                        <li>Regular fit</li>
-                        <li>100% Cotton</li>
-                        <li>Free shipping with 4 days delivery</li>
+                        <li className="text-xl mt-1">Dark blue suit for a tone-on-tone look</li>
+                        <li className="text-xl mt-1">Regular fit</li>
+                        <li className="text-xl mt-1">00% Cotton</li>
+                        <li className="text-xl mt-1">Free shipping with 4 days delivery</li>
                     </ul>
 
                     
@@ -74,7 +76,7 @@ const Details = () => {
   </button>
 </div>
     </div>
-    <h4 className="text-red-600 my-3">Total Price: {total}$</h4>
+    <h4 className=" my-3">Total Price: <span className="text-red-500">{total}$</span></h4>
             <div className="md:flex justify-end mt-6">
 
                        <Link to='/checkout' state={{data:idQuantityArray, total:total}}><button className="btn btn-secondary"> Buy Now</button></Link>

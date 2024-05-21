@@ -62,7 +62,7 @@ export default function NewTab() {
 
   return (
     <div className=''>
-      <div className='h-1 mt-7 bg-slate-100'></div>
+      
       <div className='flex justify-center items-center mt-3'>
         <Tabs
           className={`py-3 'bg-neutral-500`} // Set text color based on dark mode

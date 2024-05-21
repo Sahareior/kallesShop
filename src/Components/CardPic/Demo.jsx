@@ -40,12 +40,12 @@ const Demo = ({ img, zoomImage}) => {
           .detail {
             position: absolute;
           
-            top: calc(17% + 20px);
-            right: calc(30% + 20px);
-            margin-top:10px;
-            margin-right:20px;
-            width: 24%;
-            height:580px;
+            top: 0;
+            right: 0;
+            margin-top:50px;
+            margin-right:200px;
+            width: 32%;
+            height:530px;
           
             
             float: left;

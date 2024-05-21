@@ -5,8 +5,8 @@ function Test() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       let halfMaskSize = 250;
-      if (window.innerWidth >= 1400) {
-        halfMaskSize = 400;
+      if (window.innerWidth >= 1300) {
+        halfMaskSize = 300;
       }
 
       let h1 = document.getElementById('heading'),

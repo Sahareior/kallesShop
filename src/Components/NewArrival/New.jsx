@@ -28,7 +28,7 @@ const New = () => {
   };
 
   return (
-    <div className={`mt-14 border-2 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <div >
       <div className="md:flex hidden md:visible justify-between">
         <div className="ml-[600px]">
           <Headings text={"Best Sells"} />
@@ -37,15 +37,15 @@ const New = () => {
           <Headings text={"Newly rrArrived"} />
         </div>
       </div>
-      <div className="md:flex w-full items-center md:justify-between gap-2">
-        <div className="flex justify-center items-center flex-col">
+      <div className="md:flex  md:w-3/4  justify-center  mx-auto">
+        <div className="flex  justify-center items-center flex-col">
           {verify ? (
             <MobileView data={bestSellers} addToCart={addToCart} text={"Best Sells"} />
           ) : (
             <Bestsellers isDarkMode={isDarkMode} addToCart={addToCart} data={newArrivals} />
           )}
         </div>
-        <div className="md:w-5/6 w-full md:-mt-7 flex flex-col justify-center md:mr-52 md:backdrop:px-16">
+        <div className="md:w-5/6 w-full md:-mt-9 flex flex-col  justify-center  md:backdrop:px-16">
           <div className="flex justify-center items-center flex-col">
             {verify ? (
               <MobileView data={newArrivals} addToCart={addToCart} text={"New Arrives"} />

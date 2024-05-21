@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Bestsellers = ({data,addToCart}) => {
 
+
+
   const notify = () =>
   toast("🦄 Item has added to cart!!", {
     position: "top-center",
@@ -43,7 +45,7 @@ const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 const totalPages = Math.ceil(data.length / itemsPerPage);
 const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
   return (
-    <div className='w-[1300px] p-5'>
+    <div className='w-[1200px] p-5'>
        <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -59,7 +61,7 @@ const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
     
      <div className='grid grid-cols-3 gap-3'>
       {
-        currentData.map(items => <div key={items._id}><a href="javascript:void(0)" className="group relative block bg-black">
+        currentData.map(items => <div key={items._id}><a href="javascript:void(0)" className="group h-[450px] relative block bg-black">
         <img
           alt="Developer"
           src={items.img}

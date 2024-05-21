@@ -33,7 +33,7 @@ const App = () => {
     <div className={`${isDarkMode? 'bg-black':''}`}>
       <Navbar />
       <Hero />
-      <Products />
+      {/* <Products /> */}
       <NewTab />
       <New />
       <Blog />
