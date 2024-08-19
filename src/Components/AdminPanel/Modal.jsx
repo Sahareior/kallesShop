@@ -1,13 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import { useUpdateProductMutation } from '../../ReactRedux/apiSlice'
 
-export default function Modal({items}) {
+export default function Modal({items,refetch}) {
     const {_id,title, gender,img,img2,color,date,email,category,zoomImage,price} = items
   let [isOpen, setIsOpen] = useState(false)
   const [sgender,setSgender] = useState(gender)
   const [scategory,setScategory] = useState(category)
+  const [updateProduct] = useUpdateProductMutation()
   
-console.log(sgender,scategory)
+
 
   function closeModal() {
     setIsOpen(false)
@@ -25,32 +27,32 @@ console.log(sgender,scategory)
       setScategory(e.target.value)
     }
 
-const handleSubmit =(e)=>{
-    e.preventDefault()
-    const gender = sgender.toLowerCase()
-    const title = e.target.title.value
-    const category = scategory.toLowerCase()
-    const img = e.target.img.value
-    const img2 = e.target.img2.value
-    const color = e.target.color.value
-    const date = e.target.date.value
-    const email = e.target.email.value 
-    const zoomImage = e.target.zoom.value
-    const price = parseFloat(e.target.price.value)
-
-    const value ={title, gender,img,img2,color,date,email,category,zoomImage,price}
-    console.log(value)
-    fetch(`https://app-flame-five.vercel.app/products/${_id}`,{
-        method:"PUT",
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify(value)
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const id = items._id; // Ensure you are passing the correct _id
+      console.log(id)
+      const gender = sgender.toLowerCase();
+      const title = e.target.title.value;
+      const category = scategory.toLowerCase();
+      const img = e.target.img.value;
+      const img2 = e.target.img2.value;
+      const color = e.target.color.value;
+      const date = e.target.date.value;
+      const email = e.target.email.value;
+      const zoomImage = e.target.zoom.value;
+      const price = parseFloat(e.target.price.value);
     
-    })
-    .then(res=> res.json())
-    .then(result => console.log(result))
-}
+      const value = { title, gender, img, img2, color, date, email, category, zoomImage, price };
+      
+      try {
+        await updateProduct({ id, data: value }).unwrap();
+        refetch();
+        closeModal();
+      } catch (error) {
+        console.error('Error while updating product:', error);
+      }
+    };
+    
   return (
     <>
       <div className=" flex text-black items-center justify-center">

@@ -9,16 +9,17 @@ import useIsMobile from '../../Hooks/useIsMobile';
 import { ShoppingCart } from '@mui/icons-material';
 import Toggler from '../toggler/Toggler';
 import useData from '../../Hooks/useData';
+import { useGetProductsQuery } from '../../../ReactRedux/apiSlice';
 
 const Navbar = () => {
 
   const {cartPrice} = useCon()
    const mobile = useIsMobile()
    const [data] = useData()
-  
+   const { data: products, refetch } = useGetProductsQuery();
    const {user,logout,isDarkMode} = useCon()
-  console.log(cartPrice)
 
+console.log(products)
 
   
 
@@ -28,7 +29,7 @@ const Navbar = () => {
 
   return (
     <div>
-<div className={`${isDarkMode? 'bg-gray-900 text-gray-100 text-sm': 'bg-[#C5AA6A]'} navbar z-30  `}>
+<div className={`${isDarkMode? 'bg-gray-900 text-gray-100 text-sm': 'bg-[#b44646f1]'} navbar z-30  `}>
   <div className="navbar-start">
     <div className={`dropdown ${mobile? 'visible':'hidden'}`}>
       <label tabIndex={0} className="btn btn-ghost hidden">
@@ -52,8 +53,8 @@ const Navbar = () => {
 <li className={mobile? "hidden": ''}>
 <ul className="navbar-links ">
 <li className="navbar-dropdown">
- <li> <h6 className='mt-4  '>Shop</h6></li>
-  <div className="dropdown">
+ {/* <li> <h6 className='mt-4  '>Shop</h6></li> */}
+  {/* <div className="dropdown">
 <div>
   
 <div>
@@ -76,7 +77,7 @@ const Navbar = () => {
   </div>
   </div>
 </div>
-  </div>
+  </div> */}
 </li>
 
 </ul>
@@ -90,12 +91,12 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end z-10">
-   <li className='mr-7'> <Toggler></Toggler></li>
+   {/* <li className='md:mr-8 mr-5'> <Toggler></Toggler></li> */}
   <div className="flex justify-center items-center">
     <div className="dropdown  dropdown-end">
-     <li className='md:flex mr-5 md:visible relative '>
+     <li className='md:flex mr-7 md:visible relative '>
  {mobile?<Link to='/mcart' ></Link>:<CartItems ></CartItems>}
- <span className="badge badge-sm absolute -left-4 -top-2  indicator-item">{cartPrice.length || 0}</span>
+ <span className="badge bg-red-600 text-white badge-sm absolute -left-4 -top-2  indicator-item">{cartPrice.length || 0}</span>
      </li>
       <li className='md:hidden'><Link to='/mcart' >  <ShoppingCart /></Link></li>
     </div>
@@ -106,18 +107,12 @@ const Navbar = () => {
     <div>
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="User Avatar" />
+        <img src={user.photoURL} alt="User Avatar" />
         </div>
       </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><button onClick={logout}>Logout</button></li>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-5 shadow bg-base-100 rounded-box w-52">
+      
+        <li><button className='p-3' onClick={logout}>Logout</button></li>
       </ul>
     </div>
   ) :  <Link to='/login'>

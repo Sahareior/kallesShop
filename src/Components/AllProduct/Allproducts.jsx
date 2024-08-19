@@ -15,7 +15,7 @@ const Allproducts = () => {
   const { setCartPrice, cartPrice,isDarkMode } = useCon();
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  const [visibleDataCount, setVisibleDataCount] = useState(8); // Number of initially visible data items
+  const [visibleDataCount, setVisibleDataCount] = useState(8); 
   const [input, setInput] = useState("");
   const [result, setResult] = useState([]);
   const [isLoading,setIsloading] = React.useState([])
@@ -125,24 +125,22 @@ const items = {
   };
 
 
-// console.log(filterData)
-console.log(isLoading)
 
 
   return (
-    <div className='  mt-5'>
+    <div className='mx-auto  mt-5'>
       <Headings text={"Choose Your Products"} />
-      <div className='flex gap-6 justify-around flex-row-reverse justify-items-center'>
+      <div className='flex gap-16 justify-around flex-row-reverse justify-items-center'>
         <input type="text" placeholder="Type here" onChange={(e) => setInput(e.target.value)} name='search' className={`${isDarkMode? 'text-white text-xl' : 'bg-slate-300'} input input-bordered input-error w-44 mr-3 md:w-72 md:max-w-xs`} />
         {/* <Filter categoriesData={categoriesData} setFilterData={setFilterData} /> */}
         <FilterSystem filter={filter} setIsloading={setIsloading} type={shirts} items={items} categoriesData={categoriesData} setFilterData={setFilterData} ></FilterSystem>
       </div>
-      <div className={`${isDarkMode? 'bg-black':''} md:grid md:grid-cols-4 md:gap-4 mt-8 md:p-20 md:justify-items-center`}>
+      <div className={`${isDarkMode ? 'bg-black' : ''} flex justify-center flex-wrap mt-4 ${result.length > 3 ? 'justify-start' : 'justify-center'} gap-x-5`}>
   {isLoading.length === 0 ? (
-    <h3 className='text-centerce'>No items Found!!</h3>
+    <h3 className='text-center'>No items Found!!</h3>
   ) : (
     mobile
-      ?     <MobileView addToCart={addToCart} data={receivedData} />
+      ? <MobileView addToCart={addToCart} data={receivedData} />
       : result.slice(0, visibleDataCount).map((info) => (
           <Card
             key={info.id}
@@ -157,11 +155,14 @@ console.log(isLoading)
   )}
 </div>
 
-      {visibleDataCount < result.length && (
-        <button onClick={loadMore} className='btn md:btn-ghost md:-mt-4 mt-5 mb-6 btn-outline '>
+
+ <div>
+ {visibleDataCount < result.length && (
+        <button onClick={loadMore} className='btn md:btn-neutral mx-auto mt-14 mb-6 btn-outline '>
           Load More
         </button>
       )}
+ </div>
     </div>
   );
 };

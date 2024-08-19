@@ -26,15 +26,16 @@ function Products() {
   const shirts = data.filter(data => data.category === 'shirts')
   const jeans = data.filter(data => data.category === 'jeans')
   const women = data.filter(data => data.category === 'tops')
-  const others = data.filter(data => data.gender === 'accesorices')
+  const others = data.filter(data => data.gender === 'accessories')
 
 
 
   return (
     <div className="md:flex flex h-[1150px] justify-around  bg-black">
-      <div className="h-[900px] ml-9 mt-7">
+      <div className="h-[900px] f py-5 mx-au  mt-7">
         <Link to='/products' state={{data:shirts, shirts:"shirts"}}>
           <Promo
+        
             text="Shirts"
             cta="Get out there →"
             color="hotpink"
@@ -58,7 +59,7 @@ function Products() {
             src="https://img.freepik.com/free-photo/fashionable-portrait-smiling-elegant-brunette-girl-sunglasses_273443-1260.jpg?size=626&ext=jpg"
           />
         </Link>
-        <Link to="/products" state={{ data: others, type:'accesorices' }}>
+        <Link to="/products" state={{ data: others, type:'accessories' }}>
           <Promo
             text="Accessories"
             cta="Take a look →"

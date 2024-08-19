@@ -7,6 +7,7 @@ import useIsMobile from '../Hooks/useIsMobile';
 import { addToDb } from '../Hooks/useTools';
 import useCon from '../Hooks/useCon';
 import useData from '../Hooks/useData';
+import Democard from '../Products Cat/Democard';
 
 const New = () => {
   const [data] = useData();
@@ -29,28 +30,30 @@ const New = () => {
 
   return (
     <div >
-      <div className="md:flex hidden md:visible justify-between">
-        <div className="ml-[600px]">
-          <Headings text={"Best Sells"} />
+      <div className="">
+        <div className="mt-14 -mb-9 md:mb-9">
+          <Headings text={"Newly Added"} />
         </div>
-        <div className="mr-24">
-          <Headings text={"Newly rrArrived"} />
-        </div>
+
       </div>
-      <div className="md:flex  md:w-3/4  justify-center  mx-auto">
-        <div className="flex  justify-center items-center flex-col">
+      <div className="">
+        <div >
           {verify ? (
-            <MobileView data={bestSellers} addToCart={addToCart} text={"Best Sells"} />
+            <MobileView data={bestSellers} addToCart={addToCart}  />
           ) : (
-            <Bestsellers isDarkMode={isDarkMode} addToCart={addToCart} data={newArrivals} />
+            <Democard addToCart={addToCart} data={newArrivals} />
           )}
         </div>
-        <div className="md:w-5/6 w-full md:-mt-9 flex flex-col  justify-center  md:backdrop:px-16">
-          <div className="flex justify-center items-center flex-col">
+     
+        <div className=" w-full  flex flex-col  justify-center  md:backdrop:px-16">
+        <div className="mt-8 -mb-8 md:mb-5">
+          <Headings text={"Best Sells"} />
+        </div>
+          <div >
             {verify ? (
-              <MobileView data={newArrivals} addToCart={addToCart} text={"New Arrives"} />
+              <MobileView data={bestSellers} addToCart={addToCart}  />
             ) : (
-              <Newarrivals isDarkMode={isDarkMode} addToCart={addToCart} data={newArrivals} />
+             <Democard addToCart={addToCart} data={bestSellers} />
             )}
           </div>
         </div>

@@ -5,8 +5,12 @@ import {  DeleteOutlineRounded, ShoppingCart } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { addToDb, decrease, getShoppingCart,deleteShoppingCart } from '../Hooks/useTools';
 import useCon from '../Hooks/useCon';
+import useIsMobile from '../Hooks/useIsMobile';
 
 const CartItems = () => {
+
+  const mobile = useIsMobile()
+
   
   const [size, setSize] = React.useState('sm');
   const [open, setOpen] = React.useState(false);
@@ -20,7 +24,6 @@ const {setCartData,cartPrice, setCartPrice, isDarkMode} = useCon()
 // console.log(newData)
 
   const aws = getShoppingCart()
-  console.log(aws)
 let checkoutData = []
 
 
@@ -43,8 +46,8 @@ let checkoutData = []
       
       // Check item.price and quantity values
       if (typeof item.price !== 'number' || typeof quantity !== 'number') {
-        // console.log("Invalid price or quantity value");
-        continue; // Skip this iteration if there's an issue with price or quantity
+        
+        continue; 
       }
       
       subtotal += item.price * quantity;
@@ -52,16 +55,7 @@ let checkoutData = []
 
   }
 
-//     for (const item of cart) {
-//       // subtotal += item.price * item.quantity;
-//        quantity = aws[item.id]
-//       console.log(quantity)
-//     }
 
-//     const value ={
-//       quantity,subtotal
-//     }
-// console.log(value)
 
   const increaseValue = (product) => {
     let newCart = [];
@@ -81,17 +75,14 @@ let checkoutData = []
       newCart = [...remaining, exists];
   }
     setCart(newCart);
-    // const targetProduct = aws[product.id] 
-    // console.log(targetProduct)
+
     addToDb(product.id)
   };
 
 
   const decreaseValue = (product) => {
     let newCart = [];
-    // const newCart = [...cart, product];
-    // if product doesn't exist in the cart, then set quantity = 1
-    // if exist update quantity by 1
+
     const exists = cart.find(pd => pd.id === product.id);
 
     if(!exists){
@@ -114,10 +105,6 @@ let checkoutData = []
     setPlacement(key);
   };
 
-  // const totalPrice =()=>{
-  //   const isExists = 
-  // }
-
 
 useEffect(()=>{
   const cartdata = { total: subtotal, data: checkoutData };
@@ -130,9 +117,10 @@ const filterData = (id) =>{
   deleteShoppingCart(id)
 }
 
-console.log(subtotal)
+
   return (
     <>
+    
       <hr />
       <ButtonToolbar>
         <IconButton
@@ -157,10 +145,10 @@ console.log(subtotal)
   cartPrice.map(info =>      <div key={info.id} className='my-14 relative'>
   <img className='w-80' src={info.img} alt="" />
   <div className='flex gap-2 flex-col'>
-      <h3>{info.title}</h3>
+      <h3 className='text-xl text-black font-semibold mt-3'>{info.title}</h3>
       <span className='text-xl font-bold text-fuchsia-500'>{info.price} $</span>
-      <div className="flex">
-        <h3> Quantity:</h3>
+      <div className="flex items-center gap-2">
+        <h3 className='font-bold text-xl'> Quantity:</h3>
         <div className="quantity-field text-xl" >
                     <button
                     className="value-button decrease-button"
@@ -176,7 +164,7 @@ console.log(subtotal)
   </button>
 </div>
     </div>
-    <button className='absolute btn hover:btn-errorb bg-red-600 top-0 right-14' onClick={()=>filterData(info.id)}> <DeleteOutlineRounded /></button>
+    <button className='absolute btn hover:btn-errorb bg-red-600 top-0 right-16' onClick={()=>filterData(info.id)}> <DeleteOutlineRounded /></button>
   </div>
 </div>)
  }

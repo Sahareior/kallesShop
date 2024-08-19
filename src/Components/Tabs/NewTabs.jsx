@@ -1,30 +1,24 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import PhoneIcon from '@mui/icons-material/Phone';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
 import MobileView from '../Products Cat/MobileView';
-import Men from '../Product-Cate/Men';
-import Women from '../Product-Cate/Women';
-import Kids from '../Product-Cate/Accesorices';
-import { useState, useEffect } from 'react';
 import useCon from '../Hooks/useCon';
 import useIsMobile from '../Hooks/useIsMobile';
 import { addToDb } from '../Hooks/useTools';
 import { Headphones, Man3, Woman2TwoTone } from '@mui/icons-material';
 import useData from '../Hooks/useData';
+import CommonTab from '../Product-Cate/CommonTab';
 
 export default function NewTab() {
   const [value, setValue] = React.useState(1);
   const { setCartPrice, cartPrice, isDarkMode } = useCon();
   const [data] = useData();
   const verify = useIsMobile();
-
-  const newData = data.filter((info) => info.gender === 'male');
+console.log(data)
+  const male = data.filter((info) => info.gender === 'male');
   const femaleData = data.filter((info) => info.gender === 'female');
-  const accesorices = data.filter((info) => info.gender === 'accesorices');
-
+  const accesorices = data.filter((info) => info.gender === 'accessories');
+console.log("accesorices",accesorices)
   const addToCart = (data) => {
     const isDuplicate = cartPrice.find((item) => item.id === data.id);
     if (!isDuplicate) {
@@ -41,19 +35,20 @@ export default function NewTab() {
         if (verify) {
           return <MobileView addToCart={addToCart} isDarkMode={isDarkMode} data={accesorices} />;
         } else {
-          return <Kids isDarkMode={isDarkMode} accesorices={accesorices} />;
+          return <div className=''><CommonTab isDarkMode={isDarkMode} data={accesorices} /></div>
         }
       case 1:
         if (verify) {
           return <MobileView addToCart={addToCart} data={femaleData} />;
         } else {
-          return <Women isDarkMode={isDarkMode} femaleData={femaleData} />;
+          // return <Women isDarkMode={isDarkMode} femaleData={femaleData} />;
+          return <CommonTab isDarkMode={isDarkMode} data={femaleData} />
         }
       case 2:
         if (verify) {
-          return <MobileView addToCart={addToCart} data={newData} />;
+          return <MobileView addToCart={addToCart} data={male} />;
         } else {
-          return <Men isDarkMode={isDarkMode} newData={newData} />;
+          return <CommonTab isDarkMode={isDarkMode} data={male} />;
         }
       default:
         return null;

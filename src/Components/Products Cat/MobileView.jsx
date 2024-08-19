@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { ShoppingCartSharp } from "@mui/icons-material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useCon from "../Hooks/useCon";
 
 const MobileView = ({ data, text, addToCart }) => {
+  const {user,logout,isDarkMode} = useCon()
   const notify = () =>
-    toast("🦄 Item has added to cart!!", {
-      position: "top-center",
+    toast(" Item has added to cart!!", {
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -57,9 +59,9 @@ const MobileView = ({ data, text, addToCart }) => {
         theme="light"
       />
       <Headings text={text}></Headings>
-      <div className="grid grid-cols-2 gap-2 p-2 justify-items-center">
+      <div className="grid grid-cols-2 gap-y-5 gap-x-3 p-2 justify-items-center">
         {currentData.map((item) => (
-          <div key={item._id} className=" h-[300px]">
+          <div key={item._id} className=" h-[350px] relative w-full">
             <div className="">
               <div className="h-52 w-full">
                 <img
@@ -68,15 +70,18 @@ const MobileView = ({ data, text, addToCart }) => {
                   className="md:w-1/3 rounded-t-lg md:rounded-l-lg md:rounded-t-none object-cover h-full w-full md:h-auto"
                 />
               </div>
-              <div className="p-1">
-                <p className=" ">{item.title}</p>
-                <p className="-mt-0">${item.price}</p>
-                <div className="flex gap-4 mt-1  justify-between">
+              <div className="p-1 flex  flex-col justify-between">
+             <div>
+             <p className={`${isDarkMode ? 'text-stone-100' : 'text-black'}`}>{item.title}</p>
+
+<p className={`${isDarkMode? 'text-slate-200': 'text-black'} -mt-0`}>${item.price}</p>
+             </div>
+                <div className="flex w-full gap-4 mt-3 absolute bottom-3 justify-around">
                   <Link
                     to={`/mobile/details/${item.id}`}
                     state={{ data: item }}
                   >
-                    <button className="btn btn-secondary btn-sm">
+                    <button className="btn btn-error text-center btn-sm">
                       Buy Now
                     </button>
                   </Link>
@@ -86,7 +91,7 @@ const MobileView = ({ data, text, addToCart }) => {
                       addToCart(item);
                       notify();
                     }}
-                    className="btn btn-primary flex items-center justify-center btn-sm"
+                    className="btn btn-group hover:bg-purple-300 flex items-center justify-center btn-sm"
                   >
                     <span className="-mt-2">
                       <ShoppingCartSharp></ShoppingCartSharp>

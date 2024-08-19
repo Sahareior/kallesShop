@@ -34,7 +34,7 @@ const Checkout = () => {
         const details = {name,email,address,data,total,phone}
         console.log(details)
        
-        fetch('https://app-flame-five.vercel.app/payments',{
+        fetch('http://localhost:5000/payments',{
             method:"POST",
             headers:{
                 'content-type': 'application/json'

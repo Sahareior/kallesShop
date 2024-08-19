@@ -7,6 +7,7 @@ import Navbar from "./Components/Shared/Navbar/Navbar";
 import Blog from "./Components/Blog/Blog";
 import NewTab from "./Components/Tabs/NewTabs";
 import useCon from "./Components/Hooks/useCon";
+import Navbar2 from "./Components/Shared/Navbar/Navbar2";
 
 
 const App = () => {

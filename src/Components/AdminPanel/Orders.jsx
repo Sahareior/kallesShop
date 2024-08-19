@@ -15,7 +15,7 @@ const handeleDate = (e) =>{
 }
 
   useEffect(() => {
-    const url = `https://app-flame-five.vercel.app/orders?date=${date}`
+    const url = `http://localhost:5000/orders?date=${date}`
     console.log(url)
       fetch(url)
         .then((res) => res.json())

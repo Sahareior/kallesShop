@@ -17,6 +17,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { Provider } from 'react-redux';
 import Orders from "./Components/AdminPanel/Orders.jsx";
 import Checkout from "./Components/Page/Filter/Checkout/Checkout.jsx";
 import Confirmpage from "./Components/Page/Filter/Checkout/Confirmpage.jsx";
@@ -27,9 +28,10 @@ import PcLogin from './Components/Authentication/pcLogin/PcLogin.jsx'
 import Login from './Components/Authentication/Login/Login.jsx'
 import PrivateRoute from "./Components/Routes/PrivateRoute.jsx";
 import Signin from "./Components/Authentication/pcSignIn/Signin.jsx";
+import { store } from "./ReactRedux/store.js";
+import Help from "./Components/AllProduct/Help/Help.jsx";
 
 const queryClient = new QueryClient();
-
 
 const router = createBrowserRouter([
   {
@@ -123,17 +125,20 @@ const router = createBrowserRouter([
 
 ]);
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <MyProvider>
-      <div className="w-full">
-        <div className="md:w-[1700px] md:min-w-[1700px] w-full md:mx-auto">
+     
+        <div className="md:px-10 mx-auto  overflow-hidden">
         <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
         <RouterProvider router={router} />
+        </Provider>
     </QueryClientProvider>
         
         </div>
-      </div>
+ 
     </MyProvider>
   </React.StrictMode>
 );

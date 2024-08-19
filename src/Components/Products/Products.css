@@ -29,8 +29,9 @@ height: 32.5%;
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: 0;
-  margin-left: 100px;
+ top: 220px;
+  
+  margin-left: 40px;
   font-size: 30px;
   font-weight: 700;
   color: aliceblue;
@@ -39,6 +40,7 @@ height: 32.5%;
   transform: translate(-10%, -50%);
   transition: transform var(--duration) var(--ease-out);
   pointer-events: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title::after {
@@ -55,6 +57,7 @@ height: 32.5%;
 }
 
 .image-wrapper {
+  
   width: 380px;
   height: 200px;
   overflow: hidden;
@@ -67,6 +70,7 @@ height: 32.5%;
   position: relative;
   width: 120%;
   height: 100%;
+  margin-right: 40px;
   object-fit: cover;
   transform: translateX(-10%);
   transition: transform var(--duration) var(--ease-out);
@@ -92,6 +96,7 @@ height: 32.5%;
 
 .promo:hover .image-wrapper {
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  /* transform: translateX(25%); */
   transform: translateX(25%);
   transition-timing-function: var(--bounce-out);
 }
@@ -116,15 +121,37 @@ height: 32.5%;
 /* Add a media query for screens with a maximum width of 768px (typical for mobile devices) */
 @media (max-width: 468px) {
   .promo {
-    /* Set the desired width for mobile devices */
-    width: 30%; /* You can adjust the percentage as needed */
-    /* You can also adjust other styles for mobile devices here */
-  }
+    width: 100%;
   
-  /* Add additional styles for other elements as needed for mobile devices */
+  }
+
+  .image-wrapper {
+    width: 100%;
+  
+  }
+
+  .image-wrapper img {
+    width: 100%;
+  
+    transform: none;
+  }
+
+  .promo:hover .image-wrapper {
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    transform: none;
+  }
+
   .title {
-    /* Example mobile-specific styles */
-    font-size: 20px; /* Adjust the font size for mobile */
-    margin-left: 20px; /* Adjust the margin for mobile */
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .promo:hover .title {
+    transform: none;
+  }
+
+  .promo:hover .title::after {
+    transform: none;
+    opacity: 1;
   }
 }

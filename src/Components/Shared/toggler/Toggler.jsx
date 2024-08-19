@@ -24,7 +24,7 @@ const Toggler = () => {
     <div
       id="switch-toggle"
       className={`md:w-10 md:h-10 w-8 h-7 relative rounded-full transition duration-500 transform ${
-        isDarkMode ? 'bg-gray-700 translate-x-7' : 'bg-yellow-500 -translate-x-4'
+        isDarkMode ? 'bg-gray-700 translate-x-4 md:translate-x-7' : 'bg-yellow-500 -translate-x-4'
       } p-1 text-white`}
     >
       {isDarkMode ? (

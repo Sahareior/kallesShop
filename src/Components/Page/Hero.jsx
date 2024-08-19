@@ -8,7 +8,7 @@ const Hero = () => {
             <Carousel></Carousel>
            
             <Marquee>
-                <p className='bg-[#5c2a2b] text-xl uppercase text-center py-3 text-white'>
+                <p className='bg-[#5c2a2b]  text-xl uppercase text-center py-3 text-white'>
                     FIRST PURCHASE OFFER: TAKE 30% OFF SHOPWIDE. CODE APPLIED AT CHECKOUT
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

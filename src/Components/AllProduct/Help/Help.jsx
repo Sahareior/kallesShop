@@ -1,13 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
-import Demo from "../CardPic/Demo";
-import './Details.css';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Headings from "../Shared/Headings";
-import PopulerProducts from "../Page/Populer-Products/PopulerProducts";
-import { useEffect, useState } from "react";
-import useData from "../Hooks/useData";
 
-const Details = () => {
+import './Help.css';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
+import { useEffect, useState } from "react";
+
+import Demo from "../../CardPic/Demo";
+import Headings from "../../Shared/Headings";
+import PopulerProducts from "../../Page/Populer-Products/PopulerProducts";
+import useData from "../../Hooks/useData";
+
+const Help = () => {
     // window.scrollTo(0, 0);
 
     const [data] = useData();
@@ -76,4 +80,4 @@ const Details = () => {
     );
 };
 
-export default Details;
+export default Help;

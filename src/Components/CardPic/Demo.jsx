@@ -23,7 +23,7 @@ const Demo = ({ img, zoomImage}) => {
             background:$color_invert_fg;
             border-radius:8px;
             margin-left: 10px;
-            padding:40px;
+            padding:10px;
             section{
               padding-top:0;
             }
@@ -97,7 +97,7 @@ const Demo = ({ img, zoomImage}) => {
           <img
             className="demo-trigger"
             src={img}
-            data-zoom={zoomImage}
+            data-zoom={img}
             ref={demoTriggerRef}
           />
           <div className="">

@@ -69,7 +69,7 @@ console.log('gender:',filter)
     }
 
     const queryString = queryParams.join('&');
-    const url = `https://app-flame-five.vercel.app/allproducts?${queryString}`;
+    const url = `http://localhost:5000/allproducts?${queryString}`;
     console.log(url);
     fetch(url)
       .then((res) => res.json())

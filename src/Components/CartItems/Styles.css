@@ -1,7 +1,7 @@
 /* Styles for mobile devices (max-width: 768px) */
 @media screen and (max-width: 468px) {
     .rs-drawer-body {
-      height: 80px; /* Set the desired height for mobile devices */
+      height: 70px; /* Set the desired height for mobile devices */
     }
   }
   

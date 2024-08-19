@@ -269,7 +269,7 @@ h3 {
 
 .quantity-field .decrease-button {
   margin-right: -4px;
-  border-radius: 8px 0 0 8px;
+  border-radius: 0 8px 8px 0;
 }
 
 .quantity-field .increase-button {

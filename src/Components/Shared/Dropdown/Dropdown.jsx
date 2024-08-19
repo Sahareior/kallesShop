@@ -69,8 +69,8 @@ export default function Dropdown({hotDeals}) {
         theme="light"
       />
   {
-    hotDeals.map(items =>       <SwiperSlide className='flex gap-96' key={items._id}>
-      <div className="card relative card-compact w-72  bg-base-100 ">
+    hotDeals.map(items =>       <SwiperSlide className='flex ' key={items._id}>
+      <div className="card relative card-compact w-72">
 <figure><img className='h-72 w-full' src={items.img} alt="Shoes" /></figure>
 <div className="card-body">
   <h2 className="card-title">{items.title}</h2>

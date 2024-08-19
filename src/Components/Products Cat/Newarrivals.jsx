@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Newarrivals = ({ data,addToCart,isDarkMode }) => {
   const notify = () => toast('🦄 Item has added to cart!!', {
-    position: "top-center",
+    position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

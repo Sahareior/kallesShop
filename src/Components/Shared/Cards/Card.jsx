@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Card({ img, img2, id, info, addToCart }) {
   const notify = () => toast('🦄Item added succesfully!', {
-    position: "top-center",
+    position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -55,21 +55,22 @@ notify();
 
 <Link to={`details/${id}`} state={{ data: info }} className="btn btn-sm zoomIn ">View Details</Link>
   </div>
-                    
                   </div>
+      
                 
                 </div>
-                <div className='mt-4'>
-                <h4 className='z-10 font-[Poppins] text-[22px]'>{info.title}</h4>
-                <h5 className='text-gray-800 font-bold'>{info.price} $ </h5>
-               
-                </div>
+              
               </figure>
              
             </div>
          
           </div>
         </section>
+        <div className='mt-4 '>
+                <h4 className='z-10 font-[Poppins] text-[22px]'>{info.title}</h4>
+                <h5 className='text-gray-800 font-bold'>{info.price} $ </h5>
+               
+                </div>
       </div>
     </div>
   );

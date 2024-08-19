@@ -7,7 +7,7 @@ const useData = () => {
     const { data=[], isLoading, refetch } = useQuery({
       queryKey: [],
       queryFn: async () => {
-        const res = await fetch("https://app-flame-five.vercel.app/products");
+        const res = await fetch("http://localhost:5000/products");
         return res.json();
       },
     });

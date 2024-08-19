@@ -1,17 +1,82 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "../Shared/Cards/Title/Title";
+import { useAddItemMutation} from "../../ReactRedux/apiSlice";
 
 const AddProduct = () => {
   const [sgender, setSgender] = useState("Male");
-  const [scategory, setScategory] = useState("Jeans");
-
+  const [scategory, setScategory] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
+ console.log(brand)
+  const [addItem] = useAddItemMutation();
 
   const availableSizes = ["xs", "sm", "md", "lg", "xl"];
   const [selectedSizes, setSelectedSizes] = useState([]);
 
-
+  const womenClothing = [
+    "Dresses",
+    "Tops",
+    "Blouses",
+    "Skirts",
+    "Pants",
+    "Jeans",
+    "Shorts",
+    "Jumpsuits",
+    "Rompers",
+    "Leggings",
+    "Sweaters",
+    "Cardigans",
+    "Hoodies",
+    "Jackets",
+    "Coats",
+    "Blazers",
+    "Suits",
+    "Activewear",
+    "Sportswear",
+    "Swimwear",
+    "Sleepwear",
+    "Lingerie",
+    "Underwear",
+    "Socks",
+    "Accessories",
+    "Handbags",
+    "Purses",
+    "Scarves",
+    "Shawls",
+    "Jewelry",
+    "Hats",
+    "Caps",
+    "Belts",
+    "Sunglasses",
+    "Gloves",
+    "Mittens",
+    "Wallets",
+    "Cardholders",
+    "Hair Accessories",
+    "Ties",
+    "Bowties",
+    "Umbrellas",
+    "Footwear Accessories",
+    "Socks and Hosiery",
+    "Watches",
+    "Suspenders",
+    "Ties and Scarf Clips",
+    "Eyeglass Frames",
+    "Hand Fans",
+    "Tie Pins and Cufflinks",
+    "Wristbands",
+    "Bracelets",
+    "Footwear",
+    "Flats",
+    "Heels",
+    "Boots",
+    "Sandals",
+    "Sneakers",
+    "Traditional Wear",
+    "Spring/Summer Collection",
+    "Fall/Winter Collection"
+  ];
+  
   const maleClothing = [
     "T-Shirts",
     "Shirts",
@@ -105,79 +170,75 @@ const AddProduct = () => {
 
   const handleBrand = (e) => {
     setBrand(e.target.value);
+
   };
   const handleColor = (e) => {
     setColor(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    const currentdate = new Date()
-    const id = currentdate.getTime().toString()
-    const gender = sgender.toLowerCase();
-    const title = e.target.title.value;
-    const category = scategory.toLowerCase();
-    const img = e.target.img.value;
-    const img2 = e.target.img2.value;
-    const color = e.target.color.value;
-    const date = e.target.date.value;
-    const email = e.target.email.value;
-    const zoomImage = e.target.zoom.value;
-    const price = parseFloat(e.target.price.value);
-    const brandName = e.target.brandName.value;
-   
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    let value;
+  const currentdate = new Date()
+  const id = currentdate.getTime().toString()
+  const gender = sgender.toLowerCase();
+  const title = e.target.title.value;
+  const category = scategory.toLowerCase();
+  const img = e.target.img.value;
+  const img2 = e.target.img2.value;
+  const color = e.target.color.value;
+  const date = e.target.date.value;
+  const email = e.target.email.value;
+  // const zoomImage = e.target.zoom.value;
+  const price = parseFloat(e.target.price.value);
+  const brandName = e.target.brandName.value;
 
-    if (brand.length > 0) {
-      value = {
-        title,
-        gender,
-        img,
-        id,
-        img2,
-        color,
-        date,
-        email,
-        Psize: selectedSizes,
-        category,
-        zoomImage,
+  let data;
 
-        price,
-        PBrand: brand,
-      };
-    } else {
-      value = {
-        title,
-        gender,
-        img,
-        id,
-        img2,
-        color,
-        date,
-        email,
-        Psize: selectedSizes,
-        category,
-        zoomImage,
-        price,
-        PBrand: brandName,
-      };
-    }
+  if (brand.length > 0) {
+    data = {
+      title,
+      gender,
+      img,
+      id,
+      img2,
+      color,
+      date,
+      email,
+      Psize: selectedSizes,
+      category,
+      price,
+      PBrand: brand,
+    };
+  } else {
+    data = {
+      title,
+      gender,
+      img,
+      id,
+      img2,
+      color,
+      date,
+      email,
+      Psize: selectedSizes,
+      category,
+      price,
+      PBrand: brandName,
+    };
+  }
 
-    fetch("https://app-flame-five.vercel.app/products", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(value),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-     
-        e.target.reset();
-      });
-  };
+  console.log('Data to be submitted:', data); // Log data here
+  
+  try {
+    const res = await addItem(data).unwrap();
+    console.log('Response:', res); // Log response here
+    alert("Item added successfully");
+  } catch (error) {
+    console.error('Error:', error); // Log any errors here
+    alert("Failed to add item");
+  }
+};
 
   const handleSizeCheckboxChange = (e) => {
     const selectedSize = e.target.value;
@@ -192,28 +253,18 @@ const AddProduct = () => {
 
   const loadCategories = () => {
     if (sgender === "Male") {
-      return maleClothing.map((category) => (
-        <option key={category} value={category}>
-          {category}
-        </option>
-      ));
+      return maleClothing;
     } else if (sgender === "Female") {
-      return maleClothing.map((category) => (
-        <option key={category} value={category}>
-          {category}
-        </option>
-      ));
+      return womenClothing;
+    } else if (sgender === "Accessories") {
+      return shopAccessories;
     }
-    else if (sgender === "Accesorices"){
-      return shopAccessories.map((category) => (
-        <option key={category} value={category}>
-          {category}
-        </option>
-      ))
-    }
- 
-    return null; // You can handle other gender options here
+    return [];
   };
+  
+  useEffect(() => {
+    setScategory(loadCategories()[0]);
+  }, [sgender]);
   return (
     <div className="mb-10 pb-20">
       <div className="mt-6">
@@ -243,7 +294,7 @@ const AddProduct = () => {
                 className="text-white dark:text-gray-200"
                 htmlFor="username"
               >
-                Gender
+                For
               </label>
               <select
                 onChange={handleChange}
@@ -253,7 +304,7 @@ const AddProduct = () => {
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Accesorices">Accesorices</option>
+                <option value="Accessories">Accessories</option>
                
               </select>
             </div>
@@ -262,13 +313,19 @@ const AddProduct = () => {
     Category
   </label>
   <select
-    onChange={handleCategory}
-    className="appearance-none w-full py-1 px-2 bg-white"
-    name="category"
-    id="category"
-  >
-    {loadCategories()}
-  </select>
+  onChange={handleCategory}
+  className="appearance-none w-full py-1 px-2 bg-white"
+  name="category"
+  id="category"
+  value={scategory}
+>
+  {loadCategories().map((category) => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+  ))}
+</select>
+
 </div>
 
 
@@ -303,7 +360,7 @@ const AddProduct = () => {
                   {/* <option value="" disabled selected>Select a brand</option> */}
                   <option value="">Reset</option>
                   {
-                    clothingBrands.map(items => <option key={items} value="{items}">{items}</option>)
+                    clothingBrands.map(items => <option key={items} value={items}>{items}</option>)
                   }
                   {/* Add more options here */}
                 </select>
@@ -424,14 +481,14 @@ const AddProduct = () => {
                 <input name="img2" type="text" />
               </div>
             </div>
-            <div>
+            {/* <div>
               <label className="text-white dark:text-gray-200">
                 Zoom-Image
               </label>
               <div className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 <input name="zoom" type="text" />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex justify-center mt-6">

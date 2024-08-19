@@ -1,7 +1,7 @@
 /* --------- prod box ---------- */
 .prod-box {
   width: 350px; /* Fixed width */
-  height: 500px; /* Fixed height */
+  height: 350px; /* Fixed height */
   background-color: #fff;
   image-resolution: inherit;
   /* border: 1px solid #ddd;
@@ -13,7 +13,7 @@
   -moz-border-radius: 4px;
   border-radius: 4px; */
   position: relative;
-  margin-top: 10px;
+  margin-top: 16px;
   margin-bottom: 10px;
   font-family: "Open sans", Arial;
   overflow: hidden; /* Ensure content stays within the fixed height */

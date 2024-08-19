@@ -50,7 +50,7 @@ export default function PopulerProducts({ category }) {
             slidesPerView: 3, // Show three slides on screens wider than 768px
           },
           1024: {
-            slidesPerView: 5, // Show five slides on screens wider than 1024px
+            slidesPerView: 4, // Show five slides on screens wider than 1024px
           },
         }}
       >
@@ -58,16 +58,16 @@ export default function PopulerProducts({ category }) {
           <SwiperSlide key={items.id}>
      <div className="flex justify-center">
      {mobile ? (
-             <Link to={`products/details/${items._id}`} state={{ data: items }}>
+             <Link to={`mobile/details/${items._id}`} state={{ data: items }}>
               <div
                 className="
     group
-    inline-block pb-4 w-[200px] bg-gradient-to-tr from-blue-400 to-orange-400 text-white overflow-hidden rounded-2xl shadow
+    inline-block p-3 overflow-hidden rounded-2xl shadow
     hover:shadow-md
     transition
   "
               >
-                <figure className="max-h-64 aspect-square overflow-hidden">
+                <figure className=" aspect-square overflow-hidden">
                   <img
                     className="w-full h-full object-cover transition group-hover:scale-125"
                     src={items.img}
@@ -75,44 +75,40 @@ export default function PopulerProducts({ category }) {
                 </figure>
                 <div className="p-1 mt-6 ">
                  <div className="-mt-5">
-                 <span className="text-xl text-white font-bold">{items.title}</span>
+                 <span className="text-xl  font-bold">{items.title}</span>
                   <h5 className="text-yellow-400 mt-2">{items.price} $</h5>
                  </div>
-                 <button className="btn btn-sm mt-2 btn-secondary"> <span className="-mt-2"><ShoppingCart /></span> </button>
+                
                 </div>
               </div>
              </Link>
             ) : (
               <Link to={`products/details/${items._id}`} state={{ data: items }}>
-              <div className=" ml-14 w-72 shadow-md hover:shadow-xl  rounded-xl">
-                <a href="#">
+              <div className="ml-14 w-60 bg-white shadow-lg hover:shadow-2xl rounded-2xl transition-shadow duration-300 transform hover:scale-105">
+                <div className="relative overflow-hidden rounded-t-2xl">
                   <img
                     src={items.img}
-                    alt="Product image"
-                    className="h-80 w-72 object-cover hover:scale-105 duration-500 rounded-t-xl"
+                    alt="Product"
+                    className="h-80 w-full object-cover hover:scale-110 transform transition-transform duration-500"
                   />
-                </a>
-                <div className="px-4 py-3 w-72">
-                  <span className="text-gray-800 mr-3 uppercase text-xl">
+                </div>
+                <div className="px-4 py-5 bg-gray-50 rounded-b-2xl">
+                  <h2 className="text-gray-800 font-extrabold uppercase text-lg truncate">
                     {items.title}
-                  </span>
-                
-                  <div className="flex items-center">
-                    <p className="text-lg font-semibold  my-1">
-                   
+                  </h2>
+                  <div className="flex justify-between items-center mt-4">
+                    <p className="text-xl font-semibold text-gray-900">
                       ${items.price}
                     </p>
-                    {/* <del>
-        </del> */}
-                    <div className="ml-auto">
-                      
-                        <ShoppingCart />
-                  
-                    </div>
+                    <button className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300">
+                      <ShoppingCart />
+                    </button>
                   </div>
                 </div>
               </div>
             </Link>
+            
+            
             )}
      </div>
           </SwiperSlide>
