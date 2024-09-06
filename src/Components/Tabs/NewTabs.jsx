@@ -8,6 +8,7 @@ import { addToDb } from '../Hooks/useTools';
 import { Headphones, Man3, Woman2TwoTone } from '@mui/icons-material';
 import useData from '../Hooks/useData';
 import CommonTab from '../Product-Cate/CommonTab';
+import Headings from '../Shared/Headings';
 
 export default function NewTab() {
   const [value, setValue] = React.useState(1);
@@ -57,7 +58,7 @@ console.log("accesorices",accesorices)
 
   return (
     <div className=''>
-      
+    <Headings text={"Our Product"} />
       <div className='flex justify-center items-center mt-3'>
         <Tabs
           className={`py-3 'bg-neutral-500`} // Set text color based on dark mode

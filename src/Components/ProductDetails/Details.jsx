@@ -14,7 +14,7 @@ const Details = () => {
     const location = useLocation();
     const { img, img2, id, title, zoomImage, price, category } = location.state.data;
     const receivedData = location.state.data;
-    console.log(receivedData);
+    console.log(receivedData._id);
 
     const [quantity, setQuantity] = useState(1); // Add state to manage quantity.
 
@@ -68,7 +68,7 @@ const Details = () => {
                 <Headings text={'Similar Choices'} />
                 <div className="mt-14">
                     <div>
-                        <PopulerProducts category={category}></PopulerProducts>
+                        <PopulerProducts id={receivedData._id} category={category}></PopulerProducts>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@ import Login from './Components/Authentication/Login/Login.jsx'
 import PrivateRoute from "./Components/Routes/PrivateRoute.jsx";
 import Signin from "./Components/Authentication/pcSignIn/Signin.jsx";
 import { store } from "./ReactRedux/store.js";
-import Help from "./Components/AllProduct/Help/Help.jsx";
+
 
 const queryClient = new QueryClient();
 
@@ -64,7 +64,13 @@ const router = createBrowserRouter([
       {
         path: "products/details/:id",
         element: <Details />,
-        errorElement: <div>Oops! Something went wrong while loading details.</div>
+        errorElement: <div>Oops! Something went wrong while loading details.</div>,
+        children: [
+          {
+            path: "products/details/:id",
+            element: <Details />,
+          }
+        ]
       },
       {
         path: "products",
@@ -92,7 +98,7 @@ const router = createBrowserRouter([
         element: <Mcart></Mcart>,
       },
       {
-        path:"payments/success",
+        path:"payments/success/:transID",
         element: <Confirmpage></Confirmpage>
       },
      

@@ -95,7 +95,7 @@ const Demo = ({ img, zoomImage}) => {
       <section className="content">
         <article className="demo-area">
           <img
-            className="demo-trigger"
+            className="demo-trigger w-[450px] h-[455px]"
             src={img}
             data-zoom={img}
             ref={demoTriggerRef}

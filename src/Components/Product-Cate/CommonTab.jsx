@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Shared/Cards/Card';
-import Headings from '../Shared/Headings';
+
 import Banner from '../Shared/Banner';
 import { addToDb } from '../Hooks/useTools';
 import useCon from '../Hooks/useCon';
@@ -11,6 +11,10 @@ const CommonTab = ({ data, isLoading, isDarkMode }) => {
     const [prevPage, setPrevPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
+
+    if(!data){
+        <h3>Loading</h3>
+    }
 
     const handlePageChange = (pageNumber) => {
         if (prevPage > pageNumber) {
@@ -54,7 +58,7 @@ const CommonTab = ({ data, isLoading, isDarkMode }) => {
 
     return (
         <div className={`${isDarkMode ? 'bg-black' : ''} `}>
-            <Headings text={"Our Product"} />
+            
             <div className='flex flex-wrap justify-center gap-x-5'>
                 {currentData.map(info => (
                     <Card

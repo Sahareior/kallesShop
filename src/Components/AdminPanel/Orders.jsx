@@ -15,7 +15,7 @@ const handeleDate = (e) =>{
 }
 
   useEffect(() => {
-    const url = `http://localhost:5000/orders?date=${date}`
+    const url = `https://kallesshopserver-production.up.railway.app/orders?date=${date}`
     console.log(url)
       fetch(url)
         .then((res) => res.json())

@@ -30,6 +30,8 @@ const App = () => {
     };
   }, []);
 
+  console.log("this is window",window)
+
   return (
     <div className={`${isDarkMode? 'bg-black':''}`}>
       <Navbar />

@@ -5,9 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Democard = ({ addToCart, data }) => {
+ if(!data){
+  <h3>Loading.........</h3>
+ }
 
   const notify = () =>
-    toast("🦄 Item has added to cart!!", {
+    toast(" Item has added to cart!!", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -20,7 +23,7 @@ const Democard = ({ addToCart, data }) => {
 
   const [prevPage, setPrevPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
   const bestsellersRef = useRef(null);
 
   if(data.length === 0){
@@ -147,7 +150,7 @@ const Democard = ({ addToCart, data }) => {
       />
      <div style={containerStyle}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gridGap: "20px", padding: "20px", width: "1700px" }}>
-        {data.map((items) => (
+        {currentData.map((items) => (
           <div
             key={items._id}
             style={cardStyle}
@@ -196,7 +199,7 @@ const Democard = ({ addToCart, data }) => {
             <div style={contentStyle}>
               <div style={productNameStyle}>{items.title}</div>
               <div style={priceRatingStyle}>
-                <h2 style={priceStyle}>{items.price}</h2>
+                <h2 style={priceStyle}>{items.price} $</h2>
                 <div className="rating">
                   {[...Array(5)].map((_, i) => (
                     <i key={i} className={`fa fa-star${i < 4 ? "" : " grey"}`} aria-hidden="true"></i>

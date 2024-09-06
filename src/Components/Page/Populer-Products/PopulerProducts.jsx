@@ -19,13 +19,14 @@ import { ShoppingBagOutlined } from "@mui/icons-material";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import useIsMobile from "../../Hooks/useIsMobile";
 
-export default function PopulerProducts({ category }) {
+export default function PopulerProducts({ category,id }) {
   console.log(category)
   const [data] = useData();
-  const similerProducts = data.filter((items) => items.category == category);
+  const products = data.filter((items) => items.category == category);
+  const similerProducts = products.filter((items) => items._id != id);
   const mobile = useIsMobile();
   return (
-    <>
+    <div>
       <Swiper
         slidesPerView={1}
         centeredSlides={false}
@@ -114,6 +115,7 @@ export default function PopulerProducts({ category }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+      {similerProducts.length === 0 && <h2>No items</h2>}
+    </div>
   );
 }
