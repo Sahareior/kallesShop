@@ -35,6 +35,10 @@ console.log(product)
       setReceivedData(isLoading);
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);  // Scroll to top on component mount
+}, []);
  
 console.log(receivedData)
 const uniqueCategories = new Set();
@@ -116,7 +120,7 @@ const items = {
 
   const addToCart = (data) => {
     setCartPrice([...cartPrice, data]);
-    addToDb(data.id);
+    addToDb(data._id);
   };
 
   const loadMore = () => {
@@ -140,12 +144,12 @@ const items = {
     <h3 className='text-center'>No items Found!!</h3>
   ) : (
     mobile
-      ? <MobileView addToCart={addToCart} data={receivedData} />
+      ? <MobileView addToCart={addToCart} data={result} />
       : result.slice(0, visibleDataCount).map((info) => (
           <Card
-            key={info.id}
+            key={info._id}
             addToCart={addToCart}
-            id={info.id}
+            id={info._id}
             info={info}
             img={info.img}
             img2={info.img2}

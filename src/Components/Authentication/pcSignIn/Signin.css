@@ -11,7 +11,7 @@
 
   width: 100%;
   min-height: 100vh;
-
+gap: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

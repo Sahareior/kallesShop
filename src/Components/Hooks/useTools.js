@@ -1,5 +1,6 @@
-// use local storage to manage cart data
+// https://kellas.vercel.app
 const addToDb = id => {
+    console.log(id)
     let shoppingCart = getShoppingCart();
     // add quantity
     const quantity = shoppingCart[id];

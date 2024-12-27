@@ -1,8 +1,10 @@
 
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const Admin = () => {
-
+const loacation = useLocation()
+console.log(loacation.pathname)
+const toggggle = location.pathname === '/admin'
     return (
         <div>
             <div className="drawer text-2xl">
@@ -25,7 +27,14 @@ const Admin = () => {
         </ul>
       </div>
     </div>
-    {/* Page content here */}
+    <div>
+     {
+      toggggle && <div className='mt-11'>
+         <h1 className='flex justify-center items-center my-auto '>Hii there!</h1>
+         <p className='text-xl text-center mt-5'>This is lowcost admin panel!... xd. So dont expect much</p>
+      </div>
+     }
+    </div>
     <Outlet></Outlet>
   </div> 
   <div className="drawer-side">

@@ -78,7 +78,7 @@ console.log(bestsellersRef)
                       className="translate-y-16 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
                     >
                       <p className="text-sm text-white bg-zinc-400 p-3 flex justify-evenly">
-                        <Link to={`details/${items.id}`} state={{ data: items }} className="btn btn-sm hover:bg-red-500 zoomIn ">Details</Link>
+                        <Link to={`details/${items._id}`} state={{ data: items }} className="btn btn-sm hover:bg-red-500 zoomIn ">Details</Link>
                         <button onClick={() => {
                           addToCart(items);
                           notify();

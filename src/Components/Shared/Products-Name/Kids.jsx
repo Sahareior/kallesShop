@@ -15,7 +15,7 @@ const Kids = () => {
            <div className='grid grid-cols-3 ml-12 mt-8'>
            {
                 newData.map(info=> 
-              <Link key={info.title} to={`/products/${info.id}`} state={{data:data}}>  <p  className='text-xl'>
+              <Link key={info.title} to={`/products/${info._id}`} state={{data:data}}>  <p  className='text-xl'>
               {info.category}
               </p></Link>
                 

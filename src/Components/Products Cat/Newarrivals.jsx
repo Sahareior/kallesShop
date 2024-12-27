@@ -98,7 +98,7 @@ const Newarrivals = ({ data,addToCart,isDarkMode }) => {
                   <h2 className={`${isDarkMode? 'text-white': ''} card-title`}>{items.title}</h2>
                   <p className={`${isDarkMode? 'text-white':'text-red-500'} text-xl font-bold`}>Price: {items.price}$ <span className='text-black'>$</span></p>
                   <div className="card-actions mt-3 justify-around items-center">
-                  <Link to={`details/${items.id}`} state={{ data: items }} className="btn btn-sm zoomIn btn-primary ">View Details</Link>
+                  <Link to={`details/${items._id}`} state={{ data: items }} className="btn btn-sm zoomIn btn-primary ">View Details</Link>
                   <button onClick={() => {
 addToCart(items);
 notify();

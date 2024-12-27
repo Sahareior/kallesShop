@@ -57,32 +57,7 @@ const handleLogin =(e)=>{
 }
   return (
     <div>
-      <div className={`form-structor ${isLoginForm ? 'slide-up' : ''}`}>
-        <form onSubmit={handleCreateUser} className="signup">
-          <h2 className="form-title" onClick={toggleForm}>
-            <span></span>Signup
-          </h2>
-          <h3 className='ml-3'>Signup</h3>
-          <div className="form-holder">
-            <input type="text" name='name'  className="input" placeholder="Name" />
-            <input type="email" name='email' className="input" placeholder="Email" />
-            <input type="password" name='password' className="input" placeholder="Password" />
-          </div>
-          <button className="submit-btn">Sign up</button>
-        </form>
-        <div className={`login ${isLoginForm ? 'slide-up' : ''}`}>
-          <form onSubmit={handleLogin} className="center">
-            <h2 className="form-title" onClick={toggleForm}>
-              <span></span>{isLoginForm?'Login?':'SignUp?'}
-            </h2>
-            <div className="form-holder">
-              <input type="email" name='email' className="input" placeholder="Email" />
-              <input type="password" name='pass' className="input" placeholder="Password" />
-            </div>
-            <button className="submit-btn">Log in</button>
-          </form>
-        </div>
-      </div>
+    
     </div>
   );
 };

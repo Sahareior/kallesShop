@@ -1,6 +1,6 @@
 /* --------- prod box ---------- */
 .prod-box {
-  width: 350px; /* Fixed width */
+  width: 300px; /* Fixed width */
   height: 350px; /* Fixed height */
   background-color: #fff;
   image-resolution: inherit;
@@ -12,6 +12,7 @@
   -o-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px; */
+  background-size: cover;
   position: relative;
   margin-top: 16px;
   margin-bottom: 10px;
@@ -21,6 +22,7 @@
 .prod-box .img-holder {
   margin-top: 3px;
   text-align: center;
+  background-size: cover;
   height: 400px; /* Fixed image height */
   overflow: hidden;
   width: auto;
@@ -45,8 +47,12 @@
 }
 
 .prod-box .img-holder img {
-  max-height: 100%;
+  width: 100%; /* Make the image fill the width of the container */
+  height: 100%; /* Make the image fill the height of the container */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  display: block; /* Prevents extra space below the image */
 }
+
 
 .prod-box .anons {
   padding: 5px;

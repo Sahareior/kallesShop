@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGetProductsQuery, useDeleteProductMutation, useUpdateProductStatusMutation } from '../../ReactRedux/apiSlice';
 import Title from '../Shared/Cards/Title/Title';
 import Modal from './Modal';
+import { Co2Sharp } from '@mui/icons-material';
 
 const AllProducts = () => {
   const { data: products, refetch } = useGetProductsQuery();
@@ -9,6 +10,8 @@ const AllProducts = () => {
   const [updateProductStatus, { isLoading: isUpdating }] = useUpdateProductStatusMutation();
   const [loadingId, setLoadingId] = useState(null);
   let [isOpen, setIsOpen] = useState(false);
+
+  console.log(products)
 
   const handleClick = async (id) => {
     setLoadingId(id); // Set the loading ID to indicate which product is being deleted
@@ -71,7 +74,7 @@ const AllProducts = () => {
           </thead>
           <tbody>
             {products?.map((item, index) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <th>{index + 1}</th>
                 <th>
                   <td>

@@ -59,7 +59,14 @@ const router = createBrowserRouter([
       {
         path: "mobile/details/:id",
         element: <Details />,
-        errorElement: <div>Oops! Something went wrong while loading details.</div>
+        errorElement: <div>Oops! Something went wrong while loading details.</div>,
+        children:[
+          {
+            path: "mobile/details/:id",
+            element: <Details />,
+            errorElement: <div>Oops! Something went wrong while loading details.</div>
+          }
+        ]
       },
       {
         path: "products/details/:id",

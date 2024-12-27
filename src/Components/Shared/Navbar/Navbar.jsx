@@ -10,17 +10,20 @@ import { ShoppingCart } from '@mui/icons-material';
 import Toggler from '../toggler/Toggler';
 import useData from '../../Hooks/useData';
 import { useGetProductsQuery } from '../../../ReactRedux/apiSlice';
+import { getShoppingCart } from '../../Hooks/useTools';
 
 const Navbar = () => {
 
   const {cartPrice} = useCon()
+  console.log(cartPrice)
    const mobile = useIsMobile()
    const [data] = useData()
    const { data: products, refetch } = useGetProductsQuery();
    const {user,logout,isDarkMode} = useCon()
 
-console.log(products)
-
+   const cart = getShoppingCart()
+   const length = Object.keys(cart).length;
+   console.log(length)
   
 
   const male = data.filter(data => data.gender === 'male')
@@ -96,7 +99,7 @@ console.log(products)
     <div className="dropdown  dropdown-end">
      <li className='md:flex mr-7 md:visible relative '>
  {mobile?<Link to='/mcart' ></Link>:<CartItems ></CartItems>}
- <span className="badge bg-red-600 text-white badge-sm absolute -left-4 -top-2  indicator-item">{cartPrice.length || 0}</span>
+ <span className="badge bg-red-600 text-white badge-sm absolute -left-4 -top-2  indicator-item">{length || 0}</span>
      </li>
       <li className='md:hidden'><Link to='/mcart' >  <ShoppingCart /></Link></li>
     </div>

@@ -2,12 +2,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
+
+  // https://kellas.vercel.app
+  // https://kellas.vercel.app
+  // https://kellas.vercel.app/
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://kallesshopserver-production.up.railway.app' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://kellas.vercel.app' }),
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => '/products',
     }),
+  
     addItem: builder.mutation({
       query: (newItem) => ({
         url: '/products',

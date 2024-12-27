@@ -5,71 +5,83 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Headings from "../Shared/Headings";
 import PopulerProducts from "../Page/Populer-Products/PopulerProducts";
 import { useEffect, useState } from "react";
-import useData from "../Hooks/useData";
+import { addToDb } from '../Hooks/useTools';
+import useCon from "../Hooks/useCon";
 
 const Details = () => {
-    // window.scrollTo(0, 0);
-
-    const [data] = useData();
+    const { setCartPrice, cartPrice, isDarkMode } = useCon();
     const location = useLocation();
-    const { img, img2, id, title, zoomImage, price, category } = location.state.data;
+    const data = location.state.data;
+
+    const { img, _id, title, zoomImage, price, category } = location.state.data;
     const receivedData = location.state.data;
-    console.log(receivedData._id);
+    const [quantity, setQuantity] = useState(1);
 
-    const [quantity, setQuantity] = useState(1); // Add state to manage quantity.
+    useEffect(() => {
+        window.scrollTo(0, 0);  // Scroll to top on component mount
+    }, []);
 
-    const increaseValue = () => {
-        setQuantity(prev => prev + 1);
+    const increaseValue = () => setQuantity(prev => prev + 1);
+    const decreaseValue = () => setQuantity(prev => prev > 1 ? prev - 1 : 1);
+
+    const addToCart = () => {
+        const isDuplicate = cartPrice.find((item) => item._id === data._id);
+        if (!isDuplicate) {
+            setCartPrice([...cartPrice, data]);
+            addToDb(data._id);
+        } else {
+            console.log('Item is already in the cart');
+        }
     };
-    const decreaseValue = () => {
-        setQuantity(prev => prev > 1 ? prev - 1 : 1);
-    };
 
-    const idQuantityArray = [{ id: id, quantity: quantity }];
     const total = price * quantity;
 
     return (
-        <div className="my-20">
+        <div className="my-10 py-4 md:px-20">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-            <div className="md:flex relative gap-8 justify-around items-center">
-                <div>
-                    <Demo img={img} zoomImage={zoomImage}></Demo>
+            
+            <div className="md:flex gap-10 justify-center items-start bg-white shadow-lg py-6 rounded-lg">
+                {/* Image Section */}
+                <div className="w-full md:w-1/2">
+                    <Demo img={img} zoomImage={zoomImage} />
                 </div>
-                <div className="ml-4">
-                    <h3 className="text-4xl font-bold">{title}</h3>
-                    <h3 className="text-lg mt-2">$ {price}</h3>
 
-                    <div className="about flex flex-col gap-5">
-                        <h4 className="text-xl">Availability: <span className="text-xl text-green-500">In stock</span></h4>
-                        <h4 className="text-xl ">Product Code: <span className="text-xl text-gray-400">#4657</span></h4>
-                        {/* <p>Tags: <span>Fashion, Hood, Classic</span></p> */}
+                {/* Product Details Section */}
+                <div className="w-full px-8 md:w-1/2 mt-6 md:mt-0">
+                    <h3 className="text-3xl font-semibold text-gray-900">{title}</h3>
+                    <h3 className="text-2xl text-blue-500 mt-2">$ {price}</h3>
+
+                    <div className="flex flex-col gap-4 mt-6">
+                        <h4 className="text-xl font-medium">Availability: <span className="text-green-500">In stock</span></h4>
+                        <h4 className="text-lg text-gray-500">Product Code: <span className="text-gray-600">#4657</span></h4>
                     </div>
 
-                    <ul>
-                        <li className="text-xl mt-1">Dark blue suit for a tone-on-tone look</li>
-                        <li className="text-xl mt-1">Regular fit</li>
-                        <li className="text-xl mt-1">100% Cotton</li>
-                        <li className="text-xl mt-1">Free shipping with 4 days delivery</li>
+                    <ul className="list-disc list-inside mt-6 space-y-2 text-lg text-gray-700">
+                        <li>Dark blue suit for a tone-on-tone look</li>
+                        <li>Regular fit</li>
+                        <li>100% Cotton</li>
+                        <li>Free shipping with 4 days delivery</li>
                     </ul>
 
-                    <div className="mt-9">
-               
-                        <h4 className="my-3">Total Price: <span className="text-red-500">{total}$</span></h4>
-                        <div className=" mt-6">
-                            <Link to='/checkout' state={{ data: idQuantityArray, total: total }}>
-                                <button className="btn btn-secondary"> Buy Now</button>
-                            </Link>
-                        </div>
+                    {/* Price and Add to Cart Section */}
+                    <div className="mt-16">
+       
+
+                        <button 
+                            onClick={addToCart} 
+                            className="btn bg-blue-600 hover:bg-blue-700  text-white py-2 px-8 rounded-lg mt-6 transition-all"
+                        >
+                            <ShoppingCartIcon className="mr-2"/> Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
-            <div className="md:my-32 mt-24">
-                <Headings text={'Similar Choices'} />
-                <div className="mt-14">
-                    <div>
-                        <PopulerProducts id={receivedData._id} category={category}></PopulerProducts>
-                    </div>
+
+            {/* Similar Products Section */}
+            <div className="mt-16">
+                <Headings text="Similar Choices" />
+                <div className="mt-10">
+                    <PopulerProducts id={receivedData._id} category={category} />
                 </div>
             </div>
         </div>

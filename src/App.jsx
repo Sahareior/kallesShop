@@ -12,28 +12,12 @@ import Navbar2 from "./Components/Shared/Navbar/Navbar2";
 
 const App = () => {
   const {isDarkMode} = useCon()
-  useEffect(() => {
-    const desiredZoomLevel = 0.67;
-
-    
-
-    const handleBeforeUnload = () => {
-      // Clear localStorage data here
-      localStorage.clear();
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
 
 
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
 
-  console.log("this is window",window)
 
   return (
-    <div className={`${isDarkMode? 'bg-black':''}`}>
+    <div className="">
       <Navbar />
       <Hero />
       <Products />

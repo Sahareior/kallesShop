@@ -42,10 +42,10 @@ const Demo = ({ img, zoomImage}) => {
           
             top: 0;
             right: 0;
-            margin-top:50px;
+            margin-top:170px;
             margin-right:200px;
             width: 32%;
-            height:530px;
+            height:330px;
           
             
             float: left;

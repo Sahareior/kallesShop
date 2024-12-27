@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Headings from "../Shared/Headings";
 import { Link } from "react-router-dom";
 import { ShoppingCartSharp } from "@mui/icons-material";
@@ -8,6 +8,8 @@ import useCon from "../Hooks/useCon";
 
 const MobileView = ({ data, text, addToCart }) => {
   const {user,logout,isDarkMode} = useCon()
+  const cardContainerRef = useRef(null)
+
   const notify = () =>
     toast(" Item has added to cart!!", {
       position: "bottom-right",
@@ -36,6 +38,10 @@ const MobileView = ({ data, text, addToCart }) => {
       setCurrentPage(pageNumber);
     }
     setPrevpage(pageNumber);
+
+    if (cardContainerRef.current) {
+      cardContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Calculate the index range for the current page
@@ -58,8 +64,8 @@ const MobileView = ({ data, text, addToCart }) => {
         pauseOnHover
         theme="light"
       />
-      <Headings text={text}></Headings>
-      <div className="grid grid-cols-2 gap-y-5 gap-x-3 p-2 justify-items-center">
+      {/* <Headings text={text}></Headings> */}
+      <div className="grid grid-cols-2 gap-y-5 gap-x-3 p-2 justify-items-center" ref={cardContainerRef}>
         {currentData.map((item) => (
           <div key={item._id} className=" h-[350px] relative w-full">
             <div className="">
@@ -78,7 +84,7 @@ const MobileView = ({ data, text, addToCart }) => {
              </div>
                 <div className="flex w-full gap-4 mt-3 absolute bottom-3 justify-around">
                   <Link
-                    to={`/mobile/details/${item.id}`}
+                    to={`/mobile/details/${item._id}`}
                     state={{ data: item }}
                   >
                     <button className="btn btn-error text-center btn-sm">

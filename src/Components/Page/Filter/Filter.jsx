@@ -63,7 +63,7 @@ export const Filter = ({setFilterData,categoriesData}) => {
     }
     
     const queryString = queryParams.join('&');
-    const url = `https://kallesshopserver-production.up.railway.app/allproducts?${queryString}`;
+    const url = `https://kellas.vercel.app/allproducts?${queryString}`;
     console.log(url);
      fetch(url)
     .then(res=> res.json())

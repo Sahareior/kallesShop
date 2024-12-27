@@ -35,10 +35,10 @@ export default function Dropdown({hotDeals}) {
   });
 
   const addToCart = (data) => {
-    const isDuplicate = cartPrice.find((item) => item.id === data.id);
+    const isDuplicate = cartPrice.find((item) => item._id === data._id);
     if (!isDuplicate) {
       setCartPrice([...cartPrice, data]);
-      addToDb(data.id);
+      addToDb(data._id);
     } else {
       console.log('Item is already in the cart');
     }

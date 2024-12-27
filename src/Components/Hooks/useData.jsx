@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+
 
 const useData = () => {
 
@@ -7,7 +7,7 @@ const useData = () => {
     const { data=[], isLoading, refetch } = useQuery({
       queryKey: [],
       queryFn: async () => {
-        const res = await fetch("https://kallesshopserver-production.up.railway.app/products");
+        const res = await fetch("https://kellas.vercel.app/products");
         return res.json();
       },
     });

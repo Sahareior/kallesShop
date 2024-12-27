@@ -19,10 +19,10 @@ const New = () => {
   const bestSellers = Array.isArray(data) && data.filter(info => info.bestSells === 'yes');
 
   const addToCart = (data) => {
-    const isDuplicate = cartPrice.find((item) => item.id === data.id);
+    const isDuplicate = cartPrice.find((item) => item._id === data._id);
     if (!isDuplicate) {
       setCartPrice([...cartPrice, data]);
-      addToDb(data.id);
+      addToDb(data._id);
     } else {
       console.log('Item is already in the cart');
     }
@@ -31,7 +31,7 @@ const New = () => {
   return (
     <div >
       <div className="">
-        <div className="mt-14 -mb-9 md:mb-9">
+        <div className="mt-14  md:mb-9">
           <Headings text={"Newly Added"} />
         </div>
 
@@ -45,8 +45,8 @@ const New = () => {
           )}
         </div>
      
-        <div className=" w-full  flex flex-col  justify-center  md:backdrop:px-16">
-        <div className="mt-8 -mb-8 md:mb-5">
+        <div className="mt-24">
+        <div className="mt-8  md:mb-5">
           <Headings text={"Best Sells"} />
         </div>
           <div >

@@ -15,7 +15,7 @@ const Male = () => {
            <div className='grid grid-cols-3 ml-12 mt-8'>
            {
                 newData.map(info=> 
-              <Link key={info.id} to={`/products/${info.id}`} state={{data:newData}}>  <p  className='text-xl'>
+              <Link key={info._id} to={`/products/${info._id}`} state={{data:newData}}>  <p  className='text-xl'>
               {info.category}
               </p></Link>
                 

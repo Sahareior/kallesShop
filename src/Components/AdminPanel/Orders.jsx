@@ -14,14 +14,25 @@ const handeleDate = (e) =>{
   setDate(e.target.value)
 }
 
-  useEffect(() => {
-    const url = `https://kallesshopserver-production.up.railway.app/orders?date=${date}`
-    console.log(url)
-      fetch(url)
-        .then((res) => res.json())
-        .then((result) => setItem(result));
-  }, [date]);
-console.log(item)
+useEffect(() => {
+  const url = `https://kellas.vercel.app/orders?date=${date}`;
+  
+  fetch(url)
+    .then((res) => res.json())
+    .then((result) => {
+      // Sort the result by newest date (orderdTime)
+      const sortedResult = result.sort((a, b) => {
+        // Convert the orderdTime to Date objects for comparison
+        const dateA = new Date(a.orderdTime);
+        const dateB = new Date(b.orderdTime);
+        return dateB - dateA; // Sort by descending order (newest first)
+      });
+      
+      setItem(sortedResult); // Set the sorted items
+    });
+}, [date]);
+
+// console.log(item)
   const idArray = item.flatMap(items => {
       if (items && items.orderdItem && items.orderdItem.data) {
         return items.orderdItem.data.flatMap(dataItem => dataItem.id);
@@ -35,13 +46,13 @@ console.log(item)
   const matchedData = [];
   const idSet = new Set(); // Set to keep track of unique IDs
   
-  for (const id of idArray) {
+  for (const _id of idArray) {
       // Check if the id is not already in the Set
-      if (!idSet.has(id)) {
-          const exists = data.find(info => info.id == id);
+      if (!idSet.has(_id)) {
+          const exists = data.find(info => info._id == _id);
           if (exists) {
               matchedData.push(exists);
-              idSet.add(id); // Add the id to the Set
+              idSet.add(_id); // Add the id to the Set
           }
       }
   }
@@ -65,7 +76,7 @@ console.log(item)
     setNewDate(initialNewDate); // Set newDate to initialNewDate
   }, [item, initialNewDate]);
 
-  console.log(newDate);
+console.log(item)
     return (
       <div >
   {/* {
@@ -98,62 +109,58 @@ console.log(item)
             </div>
    <div >
  
-   <div className='flex justify-center flex-col  p-14 gap-4 '>
-      {/* ........... */}
-    {item.length > 0 &&  // Add conditional rendering
-          item.map(order => (
-              <div className='border flex items-center justify-around border-black' key={order._id}>
-               <div className='flex flex-col gap-2'>
-                <h4><CalendarMonth /> Date: {order.orderDate}</h4>
-               <h4> <Person2Outlined /> Name: {order.orderdItem.name}</h4>
-                  <h4> <EmailOutlined /> Email: {order.orderdItem.email}</h4>
-                  <h4><LocationCityOutlined /> Address: {order.orderdItem.address}</h4>
-                  <h4><PhoneAndroidOutlined /> Phone: {order.orderdItem.phone}</h4>
-                  <h4 className='text-red-500'><MoneyOffTwoTone /> Total: {order.orderdItem.total} $</h4>
-                  <h4 className='border border-red-600 flex justify-center items-center bg-red-400 text-white w-28'>Paid: {order.paid? "Yes":"No"}</h4>
-                  
-               </div>
-                  <div className='flex mt-7 gap-28 w-[1050px] overflow-x-auto'>
-                  {order.orderdItem.data && order.orderdItem.data.map(item => (
-<div key={item.id} className='w-[300px]'>
- <div className='ml-20 '>
- <li className='text-xl font-bold'><span className='text-red-500'>id:</span> {item.id}</li>
-  <li className='text-xl font-bold'><span className='text-red-500'>Quantity:</span> {item.quantity}</li>
- </div>
-  {
-       matchedData.map(data => {
-          if (data.id == item.id) {
-           return <div  key={data.id}> 
+   <div className='flex  flex-col items-center p-8 gap-8 bg-gray-100'>
+  {item.length > 0 && item.map(order => (
+    <div className='w-full relative  max-w-6xl bg-white rounded-lg shadow-md p-6 border border-gray-300' key={order._id}>
+      {/* Order Details Section */}
+      <div className='flex flex-col  gap-6'>
+        <div className='flex flex-col gap-3 text-gray-700'>
+          <h4 className='flex items-center text-lg'><CalendarMonth className='mr-2' /> <span>Date:</span>  {order.orderDate}</h4>
+          <h4 className='flex items-center text-lg'><Person2Outlined className='mr-2' /> <span>Name:</span> {order.orderdItem.name}</h4>
+          <h4 className='flex items-center text-lg'><EmailOutlined className='mr-2' /> <span>Email:</span> {order.orderdItem.email}</h4>
+          <h4 className='flex items-center text-lg'><LocationCityOutlined className='mr-2' /> <span>Address:</span> {order.orderdItem.address}</h4>
+          <h4 className='flex items-center text-lg'><PhoneAndroidOutlined className='mr-2' /> <span>Phone:</span> {order.orderdItem.phone}</h4>
+          <h4 className='text-red-600 flex items-center text-lg'><MoneyOffTwoTone className='mr-2' /> <span>Total:</span> {order.orderdItem.total} $</h4>
+        </div>
+          <h4 className={`border rounded-lg absolute right-5 top-4 text-center w-36 px-2 py-1 ${order.paid ? 'bg-green-500 border-green-600' : 'bg-red-500 border-red-600'} text-white`}>
+            Paid: {order.paid ? "Yes" : "No"}
+          </h4>
+<div className='border-teal-300 border-b-2 w-full'></div>
+        {/* Ordered Items Section */}
+        <div className='flex mt-4 md:mt-0 gap-8 w-full overflow-x-auto'>
+          {order.orderdItem.data && order.orderdItem.data.map(item => (
+            <div key={item._id} className='min-w-[250px] bg-gray-50 rounded-lg p-4 shadow-lg'>
+              <ul className='text-left space-y-2'>
+                {/* <li className='text-lg font-semibold'><span className='text-red-500'>ID:</span> {item._id}</li> */}
+                <li className='text-lg font-semibold'><span className='text-red-500'>Quantity:</span> {item.quantity}</li>
+              </ul>
 
-           <div className="card w-96 bg-base-100 shadow-xl">
-  <figure className="px-10 pt-10">
-    <img  src={data.img} alt="Shoes" className="rounded-xl w-80 h-80" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">{data.title}</h2>
-    <p className='text-xl'>{data.price} $</p>
- 
-  </div>
-</div>
-           </div>
-          } 
-        })
-  }
- 
-
-</div>
-))}
-
-{/* ....... */}
-
-                  </div>
-               
-              </div>
-          ))
-     
-         
-      }
+              {/* Matched Data */}
+              {matchedData.map(data => {
+                if (item.id === data._id) {
+                  return (
+                    <div key={data._id} className="mt-4">
+                      <div className="card w-full bg-white shadow-md rounded-lg">
+                        <figure className="px-4 pt-4">
+                          <img src={data.img} alt={data.title} className="rounded-lg object-cover h-40 w-full" />
+                        </figure>
+                        <div className="card-body text-center">
+                          <h2 className="card-title text-xl font-semibold">{data.title}</h2>
+                          <p className="text-lg text-gray-700">{data.price} $</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
+  ))}
+</div>
+
    </div>
   </div>
     );

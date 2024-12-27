@@ -189,7 +189,7 @@ const AddProduct = () => {
       img: e.target.img.value,
       img2: e.target.img2.value,
       color: e.target.color.value,
-      email: e.target.email.value,
+      email: user.email,
       Psize: sgender === "Accessories" ? [] : selectedSizes, // Disable sizes for accessories
       price: parseFloat(e.target.price.value),
       PBrand: brand || e.target.brandName.value,
@@ -280,17 +280,6 @@ const AddProduct = () => {
               </select>
             </div>
 
-            <div>
-              <label className="text-white dark:text-gray-200" htmlFor="email">
-                Email Address
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-              />
-            </div>
 
             <div>
               <label className="text-white dark:text-gray-200" htmlFor="brandName">
@@ -398,7 +387,7 @@ const AddProduct = () => {
           {loading ? (
             <div className="text-white mt-4">Uploading...</div>
           ) : (
-            <button className="text-white bg-indigo-700 w-full mt-5 p-2 rounded hover:bg-indigo-800 transition duration-300">
+            <button className="text-white mx-auto w-56 bg-indigo-700 flex justify-center items-center mt-5 p-2 rounded hover:bg-indigo-800 transition duration-300">
               Submit
             </button>
           )}

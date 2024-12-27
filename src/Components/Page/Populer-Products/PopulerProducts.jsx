@@ -56,7 +56,7 @@ export default function PopulerProducts({ category,id }) {
         }}
       >
         {similerProducts.map((items) => (
-          <SwiperSlide key={items.id}>
+          <SwiperSlide key={items._id}>
      <div className="flex justify-center">
      {mobile ? (
              <Link to={`mobile/details/${items._id}`} state={{ data: items }}>

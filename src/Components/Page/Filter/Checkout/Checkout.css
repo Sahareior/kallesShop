@@ -1,145 +1,97 @@
-.container body {
-    font-family: 'Roboto', sans-serif!important;
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
-
-.container .mainscreen
-{
-	min-height: 1000px;
-   
-	width: 110.7%;
-	display: flex;
-    flex-direction: column;
-    background-color: #DFDBE5;
-    background-position: center;
-    background-image: url("https://wallpaperaccess.com/full/3063067.png");
-    color:#963E7B;
-}
-
-.container .card {
-	width: 106.2rem;
-    margin: auto;
-    background: white;
-    position:center;
-    align-self: center;
- 
-    border-radius: 1.5rem;
-    box-shadow: 4px 3px 20px #3535358c;
-    display:flex;
-   justify-content: center;
-   align-items: center;
-    
-}
-
-.container .leftside {
-	background: #030303;
-	width: 25rem;
-	display: inline-flex;
-    align-items: center;
+/* General page layout */
+.containerx {
+    display: flex;
     justify-content: center;
-	border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-
-.container .product {
-    object-fit: cover;
-	width: 20em;
-    height: 20em;
-    border-radius: 100%;
-}
-
-.container .rightside {
-    background-color: #ffffff;
-	width: 40rem;
-	border-bottom-right-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    padding: 1rem 2rem 3rem 3rem;
-}
-
-.container p{
-    display:block;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: .8rem 0;
-}
-
-.container .inputbox
-{
-    color: white;
-	width: 100%;
-    padding: 0.7rem;
-    border: none;
-    border-bottom: 1.5px solid #ccc;
-    margin-bottom: 1rem;
-    border-radius: 0.3rem;
-    font-family: 'Roboto', sans-serif;
-    background: rgba(181, 90, 10, 0.706);
-    font-size: 1.1rem;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    padding: 1px;
+  }
+  
+  /* Main form card */
+  .mainscreen {
+    background-color: #fff;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card container for styling */
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Form title */
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Form labels */
+  p {
+    font-size: 14px;
     font-weight: 500;
-    overflow: hidden;
-    font-size: 23px;
-  outline:none;
-}
-
-.container .expcvv {
-    display:flex;
-    justify-content: space-between;
-    padding-top: 0.6rem;
-}
-
-.container .expcvv_text{
-    padding-right: 1rem;
-}
-.container .expcvv_text2{
-    padding:0 1rem;
-}
-
-.container .button{
-    background: linear-gradient(
-135deg
-, #753370 0%, #298096 100%);
-    padding: 15px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  
+  /* Input fields */
+  .inputbox {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputbox:focus {
+    border-color: #4a90e2;
+    background-color: #fff;
+    outline: none;
+  }
+  
+  /* Button style */
+  .button {
+    width: 100%;
+    padding: 14px;
+    background-color: #4a90e2;
+    color: #fff;
     border: none;
-    border-radius: 50px;
-    color: white;
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin-top: 10px;
-    width:100%;
-    letter-spacing: .11rem;
-    outline:none;
-}
-
-.container .button:hover
-{
-	transform: scale(1.05) translateY(-3px);
-    box-shadow: 3px 3px 6px #38373785;
-}
-
-@media only screen and (max-width: 1000px) {
-   .container  .card{
-        flex-direction: column;
-        width: auto;
-      
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #357abf;
+  }
+  
+  /* Flex layout for name and address inputs */
+  .md-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .md-flex {
+      flex-direction: column;
     }
-    .container .mainscreen
-    {
-        width: 100%;
+  
+    .mainscreen {
+      padding: 10px;
     }
-   .container  .leftside{
-        width: 100%;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0;
-      border-top-right-radius:0;
-      border-radius:0;
-    }
-
-   .container  .rightside{
-        width:auto;
-        border-bottom-left-radius: 1.5rem;
-        padding:0.5rem 3rem 3rem 2rem;
-      border-radius:0;
-    }
-}
+  }
+  

@@ -19,12 +19,12 @@ console.log(data)
   const male = data.filter((info) => info.gender === 'male');
   const femaleData = data.filter((info) => info.gender === 'female');
   const accesorices = data.filter((info) => info.gender === 'accessories');
-console.log("accesorices",accesorices)
+
   const addToCart = (data) => {
-    const isDuplicate = cartPrice.find((item) => item.id === data.id);
+    const isDuplicate = cartPrice.find((item) => item._id === data._id);
     if (!isDuplicate) {
       setCartPrice([...cartPrice, data]);
-      addToDb(data.id);
+      addToDb(data._id);
     } else {
       console.log('Item is already in the cart');
     }
@@ -58,7 +58,7 @@ console.log("accesorices",accesorices)
 
   return (
     <div className=''>
-    <Headings text={"Our Product"} />
+    <Headings text={"Our Products"} />
       <div className='flex justify-center items-center mt-3'>
         <Tabs
           className={`py-3 'bg-neutral-500`} // Set text color based on dark mode

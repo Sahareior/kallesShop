@@ -24,7 +24,7 @@ const Democard = ({ addToCart, data }) => {
   const [prevPage, setPrevPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
-  const bestsellersRef = useRef(null);
+  const cardContainerRef = useRef(null)
 
   if(data.length === 0){
     return (<div><h5>No data</h5></div>)
@@ -41,8 +41,8 @@ const Democard = ({ addToCart, data }) => {
     setPrevPage(pageNumber);
 
     // Scroll to top of the Bestsellers component
-    if (bestsellersRef.current) {
-      bestsellersRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (cardContainerRef.current) {
+      cardContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -51,13 +51,14 @@ const Democard = ({ addToCart, data }) => {
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  const containerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    background: "#dcdcdc",
-  };
+  // const containerStyle = {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   minHeight: "100vh",
+  
+  //   background: "#dcdcdc",
+  // };
 
   const cardStyle = {
     width: "100%",
@@ -148,8 +149,9 @@ const Democard = ({ addToCart, data }) => {
         pauseOnHover
         theme="light"
       />
-     <div style={containerStyle}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gridGap: "20px", padding: "20px", width: "1700px" }}>
+     <div  ref={cardContainerRef} >
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gridGap: "20px", padding: "20px" }}>
+     {/* <h4>dsad</h4> */}
         {currentData.map((items) => (
           <div
             key={items._id}
@@ -172,6 +174,7 @@ const Democard = ({ addToCart, data }) => {
             }}
           >
             <div style={imgBxStyle}>
+             
               <img
                 style={imgStyle}
                 src={items.img}
@@ -192,14 +195,14 @@ const Democard = ({ addToCart, data }) => {
                   style={{ ...actionLiStyle, transitionDelay: "0.3s" }}
                 >
                   <i className="fa fa-eye" aria-hidden="true"></i>
-                  <Link to={`details/${items.id}`} state={{ data: items }} className="btn btn-xs hover:bg-red-500 zoomIn">Details</Link>
+                  <Link to={`details/${items._id}`} state={{ data: items }} className="btn btn-xs hover:bg-red-500 zoomIn">Details</Link>
                 </li>
               </ul>
             </div>
             <div style={contentStyle}>
-              <div style={productNameStyle}>{items.title}</div>
+              <div className='z-10 font-[Poppins] text-[22px] font-bold'>{items.title}</div>
               <div style={priceRatingStyle}>
-                <h2 style={priceStyle}>{items.price} $</h2>
+                <h2 className='font-[Poppins] text-[22px] font-bold'>{items.price} $</h2>
                 <div className="rating">
                   {[...Array(5)].map((_, i) => (
                     <i key={i} className={`fa fa-star${i < 4 ? "" : " grey"}`} aria-hidden="true"></i>

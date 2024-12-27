@@ -1,16 +1,132 @@
 /* Blog.css */
 
+/* Main container */
+.my-12 {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #121212;
+}
+
+.dark-bg {
+  background-color: #1c1c1c;
+}
+
+/* Grid styling */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card styling */
 .card {
-    transition: background-color 0.5s ease;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode card */
+.dark-card {
+  background-color: #1e1e1e;
+  color: white;
+  box-shadow: none;
+}
+
+.card-image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Card body styling */
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.card-body p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #1d4ed8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+/* Dark mode button */
+.dark-card .btn-primary {
+  background-color: #3b82f6;
+}
+
+.dark-card .btn-primary:hover {
+  background-color: #2563eb;
+}
+
+/* Author and time */
+.author, .time {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.dark-mode .author, .dark-mode .time {
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sm\:grid-cols-1 {
+    grid-template-columns: 1fr;
   }
-  
-  .card:hover .card-image {
-    filter: brightness(60%);
+
+  .sm\:items-center {
+    justify-content: center;
   }
-  
-  .card-image {
-    opacity: 1;
-    filter: brightness(100%);
-    transition: filter 0.5s ease;
+
+  .sm\:divider-horizontal {
+    display: none;
   }
-  
+}
+

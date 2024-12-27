@@ -37,10 +37,10 @@ function Card({ img, img2, id, info, addToCart }) {
             <div className="col-xs-6 col-sm-4 col-lg-4">
               <figure className="prod-box">
                 <div className="img-holder">
-                  <a href="#">
+                 
                     <img src={img} className="item-img-1" alt="Something" />
                     <img src={img2} className="item-img-2" alt="Something2" />
-                  </a>
+                
                   <div className="blok-hover">
                   <div className='flex  justify-around -mt-4 items-center'>
        <button
